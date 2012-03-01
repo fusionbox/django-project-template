@@ -1,0 +1,8 @@
+-e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
+-e svn+http://code.djangoproject.com/svn/django/trunk#egg=Django
+South
+Werkzeug
+django-cachebuster
+django-compressor
+django-debug-toolbar
+django-extensions
