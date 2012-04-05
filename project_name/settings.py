@@ -179,7 +179,10 @@ EMAIL_LAYOUT = 'mail/base.html'
 
 # Import server specific settings 'settings_<hostname>.py'
 try:
-    live_settings = __import__ ('settings_' + HOST_NAME)
+    import imp, sys
+    module_name = 'settings_' + HOST_NAME
+    module_info = imp.find_module(module_name, [PROJECT_PATH] + sys.path)
+    live_settings = imp.load_module(module_name, *module_info)
 except ImportError:
     pass
 else:
