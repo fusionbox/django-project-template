@@ -162,9 +162,6 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'scss {infile} {outfile}'),
 )
 
-from django.template.loader import add_to_builtins
-add_to_builtins('cachebuster.templatetags.cachebuster')
-
 
 FORCE_SCRIPT_NAME = ''
 
@@ -201,6 +198,11 @@ except ImportError:
     pass
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
+
+# This must go _after_ the cache backends are configured, which could be in
+# local settings
+from django.template.loader import add_to_builtins
+add_to_builtins('cachebuster.templatetags.cachebuster')
 
 if not DEBUG:
     # if not `running in runserver` would be a better condition here
