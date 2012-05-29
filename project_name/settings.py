@@ -159,7 +159,9 @@ COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/x-scss', 'scss {infile} {outfile}'),
+
+    # requires pyScss
+    ('text/x-scss', 'pyscss {infile} -o {outfile} -I "%s"' % (STATICFILES_DIRS[0] + '/css')),
 )
 
 
