@@ -1,6 +1,7 @@
 # Django settings for {{ project_name }} project.
 import os
 import socket
+import re
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
@@ -175,6 +176,10 @@ INTERNAL_IPS = (
         )
 
 EMAIL_LAYOUT = 'mail/base.html'
+
+IGNORABLE_404_URLS = (
+        re.compile(r'\.(php|cgi)$'),
+        )
 
 # Import server specific settings 'settings_<hostname>.py'
 try:
