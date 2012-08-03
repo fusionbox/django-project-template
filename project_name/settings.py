@@ -155,6 +155,10 @@ LOGGING = {
 
 SEND_BROKEN_LINK_EMAILS = True
 
+SCSS_IMPORTS = (
+        STATICFILES_DIRS[0] + '/css',
+        )
+
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
@@ -162,7 +166,9 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'sass {infile} {outfile}'),
 
     # requires pyScss
-    ('text/x-scss', 'pyscss {infile} -o {outfile} -I "%s"' % (STATICFILES_DIRS[0] + '/css')),
+    ('text/x-scss', 'pyscss {infile} -o {outfile} %s' %
+      '-I ' + ' '.join(['"%s"' % dir for dir in SCSS_IMPORTS])
+      )
 )
 
 
