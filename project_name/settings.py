@@ -174,7 +174,6 @@ COMPRESS_PRECOMPILERS = (
 
 FORCE_SCRIPT_NAME = ''
 
-SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 # <https://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HttpOnly>
 SESSION_COOKIE_HTTPONLY = True
 
