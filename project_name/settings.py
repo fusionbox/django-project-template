@@ -167,7 +167,7 @@ COMPRESS_PRECOMPILERS = (
 
     # requires pyScss
     ('text/x-scss', 'pyscss {infile} -o {outfile} %s' %
-      '-I ' + ' '.join(['"%s"' % dir for dir in SCSS_IMPORTS])
+      '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])
       )
 )
 
