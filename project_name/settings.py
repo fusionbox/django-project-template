@@ -188,9 +188,10 @@ EMAIL_LAYOUT = 'mail/base.html'
 
 IGNORABLE_404_URLS = (
         re.compile(r'\.(php|cgi)$'),
-        re.compile(r'/null/?$'),
+        re.compile(r'/null/?$'),  # This could be being caused by us.  Investigate?
         re.compile(r'^/phpmyadmin/', re.IGNORECASE),
         re.compile(r'^/wp-admin/'),
+        re.compile(r'^/cgi-bin/'),
         )
 
 # Import server specific settings 'settings_<hostname>.py'
