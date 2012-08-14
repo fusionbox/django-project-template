@@ -181,8 +181,9 @@ SESSION_COOKIE_HTTPONLY = True
 
 # #Require ssl
 # SECURE_SSL_REDIRECT = True
-# #This must be set to True if SSL is in use
+# #These must be set to True if SSL is in use
 # SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Debug Toolbar Settings
 INTERNAL_IPS = (
