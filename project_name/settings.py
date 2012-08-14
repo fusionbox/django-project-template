@@ -157,6 +157,10 @@ LOGGING = {
 
 SEND_BROKEN_LINK_EMAILS = True
 
+SCSS_IMPORTS = (
+        STATICFILES_DIRS[0] + '/css',
+        )
+
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
@@ -164,7 +168,9 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-sass', 'sass {infile} {outfile}'),
 
     # requires pyScss
-    ('text/x-scss', 'pyscss {infile} -o {outfile} -I "%s"' % (STATICFILES_DIRS[0] + '/css')),
+    ('text/x-scss', 'pyscss {infile} -o {outfile} %s' %
+      '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])
+      )
 )
 
 
@@ -189,6 +195,11 @@ EMAIL_LAYOUT = 'mail/base.html'
 
 IGNORABLE_404_URLS = (
         re.compile(r'\.(php|cgi)$'),
+        re.compile(r'/null/?$'),  # This could be being caused by us.  Investigate?
+        re.compile(r'^/phpmyadmin/', re.IGNORECASE),
+        re.compile(r'^/wp-admin/'),
+        re.compile(r'^/cgi-bin/'),
+        re.compile(r'^(?!/static/).*\.(css|js)/?$'),
         )
 
 # Import server specific settings 'settings_<hostname>.py'
