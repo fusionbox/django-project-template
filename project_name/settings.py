@@ -192,6 +192,7 @@ IGNORABLE_404_URLS = (
         re.compile(r'^/phpmyadmin/', re.IGNORECASE),
         re.compile(r'^/wp-admin/'),
         re.compile(r'^/cgi-bin/'),
+        re.compile(r'^(?!/static/).*\.(css|js)/?$'),
         )
 
 # Import server specific settings 'settings_<hostname>.py'
