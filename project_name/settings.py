@@ -95,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
   # 'fusionbox.middleware.GenericTemplateFinderMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'djangosecure.middleware.SecurityMiddleware',
 )
 
 ROOT_URLCONF = '{{ project_name }}.urls'
@@ -122,6 +123,7 @@ INSTALLED_APPS = (
     'fusionbox',
     'south',
     'django_extensions',
+    'djangosecure',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -168,9 +170,13 @@ COMPRESS_PRECOMPILERS = (
 
 FORCE_SCRIPT_NAME = ''
 
-SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 # <https://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HttpOnly>
 SESSION_COOKIE_HTTPONLY = True
+
+# #Require ssl
+# SECURE_SSL_REDIRECT = True
+# #This must be set to True if SSL is in use
+# SESSION_COOKIE_SECURE = True
 
 # Debug Toolbar Settings
 INTERNAL_IPS = (
