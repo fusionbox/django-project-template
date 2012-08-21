@@ -72,6 +72,7 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
+    'compressor.finders.CompressorFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
@@ -89,11 +90,12 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    'fusionbox.error_logging.middleware.FusionboxCommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-  # 'fusionbox.middleware.GenericTemplateFinderMiddleware',
+    'fusionbox.middleware.GenericTemplateFinderMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
 )
@@ -121,6 +123,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'compressor',
     'fusionbox',
+    'fusionbox.error_logging',
     'south',
     'django_extensions',
     'djangosecure',
@@ -155,7 +158,8 @@ LOGGING = {
     }
 }
 
-SEND_BROKEN_LINK_EMAILS = True
+#SEND_BROKEN_LINK_EMAILS = True
+FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
 
 SCSS_IMPORTS = (
         STATICFILES_DIRS[0] + '/css',
