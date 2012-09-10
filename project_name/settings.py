@@ -122,7 +122,7 @@ INSTALLED_APPS = (
 
     'debug_toolbar',
     'compressor',
-    'fusionbox',
+    'fusionbox.core',
     'fusionbox.error_logging',
     'south',
     'django_extensions',
