@@ -206,8 +206,8 @@ SESSION_COOKIE_HTTPONLY = True
 # Debug Toolbar Settings
 INTERNAL_IPS = (
         '127.0.0.1',
-        '63.228.88.83',
-        '209.181.77.56',
+        '208.186.116.206',
+        '208.186.142.130',
         )
 
 EMAIL_LAYOUT = 'mail/base.html'
