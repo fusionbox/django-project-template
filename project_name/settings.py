@@ -3,9 +3,13 @@ import os
 import socket
 import re
 
+# These must be set to True if SSL is in use
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-
 HOST_NAME = socket.gethostname()
 
 DEBUG = True
@@ -19,78 +23,37 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite_database',              # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'sqlite_database',
     }
 }
-
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
 TIME_ZONE = 'America/Denver'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
-
 SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = True
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
-
-# If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-
-# User-uploaded files
 MEDIA_ROOT = os.path.join(PROJECT_PATH, '..', 'media')
 MEDIA_URL = '/media/'
 
-# Static files
 STATIC_ROOT = os.path.join(PROJECT_PATH, '..', "static")
 STATIC_URL = '/static/'
-# Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_PATH, 'public'),
 )
 
-# List of finder classes that know how to find static files in
-# various locations.
 STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# Make this unique, and don't share it with anybody.
 SECRET_KEY = '{{ secret_key }}'
 
-# List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
-# A tuple of callables that are used to populate the context in RequestContext.
-# These callables take a request object as their argument and return a
-# dictionary of items to be merged into the context.
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
@@ -116,8 +79,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = '{{ project_name }}.urls'
 
-# Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
+FORCE_SCRIPT_NAME = ''
 
 TEMPLATE_DIRS = (
         os.path.join(PROJECT_PATH, 'templates')
@@ -131,8 +94,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 
     'debug_toolbar',
     'compressor',
@@ -143,11 +104,6 @@ INSTALLED_APPS = (
     'djangosecure',
 )
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -172,7 +128,6 @@ LOGGING = {
     }
 }
 
-#SEND_BROKEN_LINK_EMAILS = True
 FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
 
 SCSS_IMPORTS = (
@@ -184,26 +139,12 @@ COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
-
-    # requires pyScss
     ('text/x-scss', 'pyscss {infile} -o {outfile} %s' %
       '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])
       )
 )
-
-
-FORCE_SCRIPT_NAME = ''
-
-# <https://www.owasp.org/index.php/HTTPOnly#Browsers_Supporting_HttpOnly>
 SESSION_COOKIE_HTTPONLY = True
 
-# #Require ssl
-# SECURE_SSL_REDIRECT = True
-# #These must be set to True if SSL is in use
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
-# Debug Toolbar Settings
 INTERNAL_IPS = (
         '127.0.0.1',
         '208.186.116.206',
@@ -214,7 +155,7 @@ EMAIL_LAYOUT = 'mail/base.html'
 
 IGNORABLE_404_URLS = (
         re.compile(r'\.(php|cgi)$'),
-        re.compile(r'/null/?$'),  # This could be being caused by us.  Investigate?
+        re.compile(r'/null/?$'),
         re.compile(r'^/phpmyadmin/', re.IGNORECASE),
         re.compile(r'^/wp-admin/'),
         re.compile(r'^/cgi-bin/'),
@@ -233,11 +174,11 @@ else:
     try:
         attrlist = live_settings.__all__
     except AttributeError:
-        attrlist = dir (live_settings)
+        attrlist = dir(live_settings)
     for attr in attrlist:
         if attr.startswith('__'):
             continue
-        globals()[attr] = getattr (live_settings, attr)
+        globals()[attr] = getattr(live_settings, attr)
 
 try:
     from settings_local import *
