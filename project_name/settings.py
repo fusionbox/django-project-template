@@ -3,10 +3,7 @@ import os
 import socket
 import re
 
-# These must be set to True if SSL is in use
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+SSL_SITE = False
 
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
@@ -184,6 +181,10 @@ try:
     from settings_local import *
 except ImportError:
     pass
+
+if SSL_SITE:
+    assert HOST_NAME != 'secure'
+    from settings_secure import *
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
 
