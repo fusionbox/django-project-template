@@ -9,3 +9,4 @@ django-debug-toolbar
 django-extensions
 psycopg2
 django-secure
+django-grappelli

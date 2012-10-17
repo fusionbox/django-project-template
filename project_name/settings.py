@@ -13,10 +13,12 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 HOST_NAME = socket.gethostname()
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+# We set template debug at the bottom of the settings file in case it is set in
+# any of the external settings files
+# TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    # ('Programmers', 'programmers@fusionbox.com'),
 )
 
 MANAGERS = ADMINS
@@ -31,6 +33,12 @@ TIME_ZONE = 'America/Denver'
 SITE_ID = 1
 USE_L10N = True
 USE_TZ = True
+
+# Set Sorl Thumbnailer to png to preserve transparent backgrounds
+THUMBNAIL_FORMAT = 'PNG'
+
+# Set the site title in Grappelli
+GRAPPELLI_ADMIN_TITLE = '{{ project_name }} Admin Center'
 
 MEDIA_ROOT = os.path.join(PROJECT_PATH, '..', 'media')
 MEDIA_URL = '/media/'
@@ -73,6 +81,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'fusionbox.middleware.GenericTemplateFinderMiddleware',
+    'fusionbox.middleware.RedirectFallbackMiddleware'
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
 )
@@ -93,6 +102,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',  # Must go before admin.
     'django.contrib.admin',
 
     'debug_toolbar',
@@ -128,12 +138,14 @@ LOGGING = {
     }
 }
 
+# FusionboxCommonMiddeleware setting
 FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
 
 SCSS_IMPORTS = (
         STATICFILES_DIRS[0] + '/css',
         )
 
+# django-compressor setting
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
@@ -184,6 +196,21 @@ try:
     from settings_local import *
 except ImportError:
     pass
+
+#|
+#| Items which depend on a value that may be set in settings_local,
+#| settings_dev, or other external settings files should go below here.
+#|
+
+try:
+    TEMPLATE_DEBUG
+except NameError:
+    TEMPLATE_DEBUG = DEBUG
+
+try:
+    THUMBNAIL_DEBUG
+except NameError:
+    THUMBNAIL_DEBUG = DEBUG
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
 
