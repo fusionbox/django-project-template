@@ -1,0 +1,532 @@
+@import "common.scss";
+
+/* Fonts & Colors
+------------------------------------------------------*/
+
+$blue: #0d6791;
+$green: #6d9e4f;
+$red: #cc2222;
+
+$white10: rgba(255,255,255,0.1);
+$white50: rgba(255,255,255,0.5);
+$white90: rgba(255,255,255,0.9);
+$white: #ffffff;
+
+$reallylightgrey: #cccccc;
+$lightgrey: #999999;
+$grey: #7e7e7e;
+$darkgrey: #4f4f4f;
+$darkestgrey: #303030;
+
+$black: #000000;
+$black50: rgba(0,0,0,0.5);
+$black30: rgba(0,0,0,0.3);
+$black10: rgba(0,0,0,0.1);
+$black05: rgba(0,0,0,0.05);
+
+$font-primary: "Open Sans", Helvetica, Arial, sans-serif;
+$font-default: Helvetica, Arial, sans-serif;
+
+
+/* Widths & Sizes
+------------------------------------------------------*/
+
+$rounded: 5px;
+
+
+$main: 600px;
+$wide: 770px;
+$sidebar: 150px;
+$widebar: 330px;
+$width: 960px;
+
+$gutter: 30px;
+
+
+/* Layout
+------------------------------------------------------*/
+body {
+  background: url('../image/bg-pattern.jpg');
+  color: #535353;
+  font-size: 62.5%;
+}
+  
+body, html {
+  font-family: $font-default;
+  line-height: 20px;
+}
+
+section.breadcrumb, section.content{
+  @include clearfix;
+  @include wrapper;
+  
+  .inner {
+    @include inner;
+    display: block;
+    width: $width;
+  }
+}
+  
+  
+/* Header
+------------------------------------------------------*/
+
+header {
+  @include clearfix;
+  margin: 0 auto;
+  padding: 25px 0px 0px 0px;
+  width: 960px;
+  
+  .logo {
+    float: left;
+    height: 75px;
+    text-decoration: none;
+    width: 200px;
+    
+    img {
+      display: block;
+    }
+    
+    @include clearfix; 
+  }
+  
+  
+  /* Nav
+  ------------*/
+  nav {
+    margin: 0;
+    width: 960px;
+    z-index: 20;
+    
+    ul { 
+      margin: 0;
+      padding: 0;
+    
+      li {
+        display: inline-block;
+        float: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+      
+        ul {
+          display: none;
+          
+          a {
+            text-transform: none;
+          }
+        }
+  
+        a {
+          display: block;
+          font-size: 14px;
+          line-height: 22px;
+          margin: 0;
+          padding: 0;
+          text-decoration: none;
+        }
+      
+        &:first-child{
+          margin: 0;
+          padding: 0
+        }
+      }
+    }
+    
+    &.top {
+      @include wrapper;
+      @include clearfix;
+    }
+  }
+  
+}
+  
+
+
+/* Content
+------------------------------------------------------*/
+.content {
+  padding: 20px 0px;
+  position: relative;
+  
+  .inner {
+    @include clearfix;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+  }
+  
+  /* Left Nav
+  ----------------*/
+  
+  div.left {
+    @include default;
+    @include html;
+    background: #D7D7D7;
+    font-family: $font-primary;
+    margin-right: $gutter;
+    width: 190px;
+    
+    p.title {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 22px;
+    }
+    
+    ul {
+      list-style: none !important;
+      padding: 0px;
+      
+      li {
+        background: transparent !important;
+        margin-bottom: 4px;
+        padding: 0px;
+        
+        a {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+/* Main Content
+------------------------------------------------------*/
+
+section.main {
+  @include default;
+  @include html;
+  margin-bottom: 10px; 
+  width: 500px;
+}
+
+
+div.hr {
+  background: #f5f7f9;
+  border-top: 1px solid #b0d4ea;
+  height: 3px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  
+  &.dashed {
+    background: transparent;
+    border-top: 1px dashed #c8c7c9;
+    height: 1px;
+    margin-top: 25px;
+  }
+} 
+  
+/* Footer
+------------------------------------------------------*/  
+footer {
+  display: block !important;
+  font-family: $font-primary;
+  padding: 0;
+  
+  @include wrapper;
+
+  
+  .inner {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    width: 960px;
+  }
+  
+  
+  nav {
+    display: none;
+  }
+  
+  p {
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    
+    a {
+      color: #a3cfe9;
+      margin: 0px 8px;
+      
+      &:hover {
+        color: #fff;
+      }
+    }
+    
+    span {
+      color: #a3cfe9;
+      margin: 0px 8px;
+      text-decoration: none;
+    }
+  }
+}
+
+.code{
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-right: 5px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 25px;
+  
+  &.mm {
+    background: #333333;
+  }
+  &.pc {
+    background: #666666;
+  }
+}
+
+
+/* Fonts */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1.4em;
+}
+
+p.title {
+  font-size: 1.8em;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 36px;
+  margin-bottom: 10px;
+}
+  
+h2 {
+  color: #007ac3;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  margin-bottom: 8px;
+}
+  
+h3 {
+  color: #535353;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 5px;
+}
+  
+h4 {
+  color: $black;
+  line-height: 17px;
+  font-size: 1.7em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+  
+h5 {
+  color: $black;
+  line-height: 12px;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+  
+h6 {
+  color: $black;
+  line-height: 11px;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+ul.image {
+  list-style-type: none;
+  padding: 0px;
+  
+  li {
+    margin-bottom: 8px;
+    padding: 0px 0px 0px 28px;
+  }
+}
+  
+ul, ol {
+  li {
+    font-size: 1.4em;
+  
+    li {
+      font-size: 1.2em;
+    }
+  }
+}  
+
+p, article {
+  margin-bottom: 10px;
+}
+
+a {
+  color: $blue;
+  
+  &:hover, &:active {
+    @include transition;
+    color: lighten($blue,15%);
+  }
+}
+
+code {
+  background: lighten($green,10%);
+  color: $white;
+}
+
+pre {
+  background: $black10;
+  margin-bottom: 15px;
+
+  code { background: transparent; color: $black; }
+}
+
+
+blockquote {
+  border-left: solid 3px $green;
+  font-style: italic;
+  font-family: $font-default;
+  padding: 10px 20px;
+  
+  p {
+    margin: 0px !important;
+  }
+}
+
+th {
+  background: $blue;
+  color: $white;
+  border: 1px solid $blue;
+}
+
+td {
+  border: 1px dotted $grey;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.inner {
+  @include inner;
+  display: block;
+  width: $width;
+}
+
+/* Buttons
+------------------------------------------------------*/
+
+a.button, input[type='submit'], button, span.button {
+  @include rounded($rounded);
+  @include shadow($black10,0px,2px,8px);
+  @include gradient(darken($blue,5%),lighten($blue,5%));
+  @include transition;
+  border: 0px;
+  color: $white;
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 18px;
+  margin: 0px;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  &:hover {
+    @include gradient($blue,lighten($blue,10%));
+    @include shadow(lighten($blue,10%),0px,0px,3px);
+  }
+  
+  &.block {
+    display: block;
+  }
+  
+  &.big {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 10px 50px 10px 10px;
+  }
+  
+  &.go {
+    @include shadow(transparent,0px,0px,0px);
+    border: 0px;
+    height: 28px;
+    padding: 0px;
+    width: 36px;
+  }
+}
+
+
+/* Forms
+------------------------------------------------------*/
+.required label:after,
+.required label.after {
+  content: "*";
+  display: inline;
+  float: none;
+  font-size: 100%;
+  color: #007ac3;
+  }
+  
+.required ul li label:after,
+.required ul li label.after {
+  content: "";
+  }
+
+  
+label {
+  line-height: 20px;
+  padding-top: 4px;
+}
+
+input[type='text'], 
+input[type='number'], 
+input[type='password'], 
+select, 
+textarea, 
+input[type='file'] {
+  border: 1px solid #bababa;
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: 13px;
+  padding: 3px;
+}
+
+
+input[type='submit'] {
+  background-color: #FF6600;
+  background-image: none;
+  border-radius: 0 0 0 0;
+  box-shadow: 0 1px 5px #333333 inset;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  padding: 5px 15px;
+  text-transform: none;
+  
+  &:hover {
+    background-color: #cc6600;
+    box-shadow: 0 1px 10px #333333 inset;
+    
+  }
+}
+
+select {
+  padding: 3px;
+}
+  
+select.state {
+  width: 200px;
+}
+
+

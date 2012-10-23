@@ -1,0 +1,537 @@
+/*
+ * Common SCSS File - SCSS v1.0
+ * last edited 07/19/12
+ * @author Esther Ball-Babois & Justin Stollsteimer - Fusionbox, Inc.
+ * http://www.fusionbox.com
+ *
+ *
+ * Lists: Line 
+ * HR: Line 
+ * Table: Line 
+ * Form Elements: Line 
+ *
+ */
+
+$cyan:        #009ddb; 
+$magenta:     #d80073;
+$yellow:      #fbe200;
+$black:       #000000;
+
+$white:       #ffffff;
+$lightgrey:   #bbbbbb;
+$grey:        #5e5e5e;
+
+$k53:         #535353;
+$k35:         #353535;
+
+ 
+/* SASS Mixins
+--------------------------------------------------*/
+@mixin transition($basic: all 0.25s ease 0s) {
+  transition: $basic;
+  -o-transition: $basic;
+  -ms-transition: $basic;
+  -moz-transition: $basic;
+  -webkit-transition: $basic;
+  }
+
+@mixin shadow($color: rgba(0,0,0,.3), $left: 0px, $top: 0px, $blur: 8px) {
+  box-shadow: $left $top $blur $color;
+  -o-box-shadow: $left $top $blur $color;
+  -ms-box-shadow: $left $top $blur $color;
+  -moz-box-shadow: $left $top $blur $color;
+  -webkit-box-shadow: $left $top $blur $color;
+  }
+
+@mixin double-shadow($outer-color: rgba(0,0,0,.3), $outer-left: 0px, $outer-top: 0px, $outer-blur: 8px, $inner-color: rgba(0,0,0,.3), $inner-left: 0px, $inner-top: 0px, $inner-blur: 8px) {
+  box-shadow: $outer-left $outer-top $outer-blur $outer-color, inset $inner-left $inner-top $inner-blur $inner-color;
+  -o-box-shadow: $outer-left $outer-top $outer-blur $outer-color, inset $inner-left $inner-top $inner-blur $inner-color;
+  -ms-box-shadow: $outer-left $outer-top $outer-blur $outer-color, inset $inner-left $inner-top $inner-blur $inner-color;
+  -moz-box-shadow: $outer-left $outer-top $outer-blur $outer-color, inset $inner-left $inner-top $inner-blur $inner-color;
+  -webkit-box-shadow: $outer-left $outer-top $outer-blur $outer-color, inset $inner-left $inner-top $inner-blur $inner-color;
+  }
+
+@mixin text-shadow($color: #000000, $left: 0px, $top: 0px, $blur: 8px) {
+  text-shadow: $left $top $blur $color;
+  -o-text-shadow: $left $top $blur $color;
+  -ms-text-shadow: $left $top $blur $color;
+  -moz-text-shadow: $left $top $blur $color;
+  -webkit-text-shadow: $left $top $blur $color;
+  }
+
+@mixin rounded($radius) {
+  border-radius: $radius;
+  -o-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  }
+
+@mixin gradient($bottom,$top) {
+  background-color: $bottom;
+  background-image: -o-linear-gradient(center bottom, $bottom 1%, $top 100%);
+  background-image: -ms-linear-gradient(center bottom, $bottom 1%, $top 100%);
+  background-image: -moz-linear-gradient(center bottom, $bottom 1%, $top 100%);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.01, $bottom), color-stop(1.00, $top));
+  }
+
+@mixin default {
+  display: inline;
+  float: left;
+  height: auto;
+  width: 100%;
+  }
+
+@mixin inner {
+  display: block;
+  margin: 0 auto;
+  padding: 0px;
+  text-align: left;
+  width: 960px;
+  }
+
+@mixin clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  * html & { height: 1px }
+}
+
+@mixin wrapper {
+  background: transparent;
+  display: block;
+  height: auto;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+
+@mixin left{
+  display: inline;
+  float: left;
+  height: auto;
+  margin-right: 25px;
+  position: relative;
+  width: 160px;
+  }
+
+@mixin article{
+  display: inline;
+  float: left;
+  height: auto;
+  float: left;
+  width: 495px;
+  }
+
+@mixin aside {
+  display: inline;
+  float: left;
+  height: auto;
+  margin-left: 30px;
+  width: 250px;
+  }
+
+
+@mixin html {
+  h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, hgroup, hr {
+    display: block !important;
+    float: none !important;
+    margin-bottom: 10px;
+    width: auto !important;
+  }
+  .fl { float: left; margin: 0px 25px 15px 0px; }
+  .fr { float: right; margin: 0px 0px 15px 25px; }
+  img { @include rounded(4px); &.left { float: left; margin: 5px 20px 15px 0px; } &.right { float: right; margin: 5px 0px 15px 20px; }}
+  table { display: table; width: 100% !important; }
+}
+
+
+/* Floating 
+------------------------------------------------------*/
+
+@mixin fl{
+  display: inline;
+  float: left;
+  }
+
+@mixin fm{
+  height: auto;
+  margin: 0 auto;
+  width: 960px;
+  }
+
+@mixin fr{
+  display: inline;
+  float: right;
+  }
+  
+
+/* Buttons 
+------------------------------------------------------*/  
+
+input[type='submit'], a.button {
+  @include rounded(5px);
+  @include gradient(#9b0229, #ef4e78);
+  @include shadow();
+  @include text-shadow($black, 0px, -2px, 2px);
+  border: 0px;
+  color: $white;
+  cursor: pointer;
+  font-family: $primary;
+  font-size: 12px;
+  font-weight: normal;
+  float: right;
+  line-height: 12px;
+  margin: 0px;
+  padding: 10px 30px 8px;
+  text-align: center;
+  
+  &:hover {
+    @include gradient(#B12445, #F37B8B);
+  }
+}
+    
+/* Forms 
+------------------------------------------------------*/  
+
+input[type="email"],
+input[type='file'],
+input[type="password"],
+input[type="text"],
+textarea,
+select {
+  border: solid 1px #336E84;
+  color: #666;
+  float: right;
+  font-family: $standard;
+  font-size: 14px;
+  line-height: 1em;
+  margin: 0px;
+  padding: 5px;
+  
+  &:focus {
+    border-color: $magenta;
+    color: $black;
+    }
+  }  
+
+input[type="search"] {
+  height: 26px;
+  padding: 0px;
+  -webkit-appearance: textfield;
+  }
+
+select                  {height: 32px !important;}  
+textarea                {height: 100px !important;}
+    
+    
+label{
+  color: #000;
+  display: inline;
+  float: left;
+  margin-right: 15px;
+  margin-top: 4px;
+  width: 145px;
+  
+  span,
+  &.required span{
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 30px;
+    }
+  }
+
+      
+aside {
+  input[type="text"]    {width: 215px;}
+  select                {width: 225px;}
+  textarea              {height: 60px !important; width: 215px;}
+  
+  .check label          {margin: 0px; width: auto;}
+  }
+  
+
+/* Radio and Checkboxes
+------------------------------------------------------*/
+
+form span {
+  display: block;
+  float: left;
+  width: 100%;
+  
+  &.radio {
+    margin-right: 5px;
+    width: auto;
+    
+    label {
+      margin: 0px; 
+      width: auto;
+      }  
+    }
+  }
+
+form span.radio.required label {
+  font-weight: normal;
+  }  
+
+input[type="checkbox"], 
+input[type="radio"]{
+  display: inline-block;
+  height: auto;
+  line-height: 20px;
+  width: auto;
+  }
+
+input[type="radio"] {
+  float: left;
+  margin-right: 5px; 
+  }
+
+  
+/* Lists (un-ordered, ordered and definition lists)  
+------------------------------------------------------*/
+ul, ol, dl {
+  clear: left;
+  display: block;
+  height: auto;
+  float: left;
+  margin: 0px 0px 8px 0px;
+  width: auto;
+  }
+  
+ul {
+  list-style-type: disc;
+  padding: 0px 0px 0px 18px;
+  
+  li {
+    color: #4d4f53;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 0px 0px 4px 0px;
+    
+    ol {
+      float: none;
+      margin: 4px 0px;
+      padding: 0px 0px 0px 18px;
+      
+      li {
+        font-size: 14px;
+        line-height: 18px;
+        margin: 0px;
+        padding: 0px 0px 4px 0px;
+        
+        li {
+          font-size: 12px;
+          line-height: 16px;
+          margin: 0px;
+          padding: 0px 0px 4px 0px;
+          }
+        }
+      }
+    }
+  }
+
+ol {  
+  color: #4d4f53;
+  list-style: decimal;
+  padding: 0px 0px 0px 26px;  
+  
+  li {
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px 0px 4px 0px;
+    
+    ol {
+      float: none;
+      margin: 4px 0px;
+      padding: 0px 0px 0px 18px;
+      
+      li {
+        font-size: 14px;
+        line-height: 18px;
+        margin: 0px;
+        padding: 0px 0px 4px 0px;
+        
+        li {
+          font-size: 12px;
+          line-height: 16px;
+          margin: 0px;
+          padding: 0px 0px 4px 0px;
+          }
+        }
+      }
+    }
+  } 
+
+dl dt {
+  color: #4d4f53;
+  font-size: 100%;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0px;
+  }
+
+dl dd { 
+  color: #4d4f53;
+  font-size: 100%;
+  font-weight: normal;
+  margin: 0px;
+  padding: 0px 0px 8px 8px;
+  }
+  
+
+/* HR (usable as HTML property or div class)
+------------------------------------------------------*/
+hr, 
+div.hr {
+  @include default;
+  border: 0px none;
+  font-size: 0px;
+  height: 1px;
+  line-height: 0px;
+  }
+
+
+/*| Table (styling for generic table)
+------------------------------------------------------*/
+table { 
+  border-collapse: collapse;
+  display: table; 
+  margin: 0px 0px 15px 0px;
+  width: 100%; 
+  float: none;
+}
+
+th { 
+  border: 1px solid;
+  font-weight: bold; 
+  padding: 5px 8px; 
+}
+
+td { 
+  border: 1px solid; 
+  padding: 5px 8px; 
+}
+
+
+/* Common Classes 
+------------------------------------------------------*/
+strong, .strong {
+  font-weight: bold; 
+  }
+  
+em, 
+.em { 
+  font-style: italic; 
+  }
+  
+sup {
+  bottom: 6px;
+  font-size: 60% !important;
+  position: relative; 
+  }
+
+p, h1, h2, h3, h4, h5, h6 {
+  @include default;
+  }
+
+
+/* Block Elements
+------------------------------------------------------*/
+blockquote,
+code {
+  display: block;
+  float: left;
+  margin: 10px 0px;
+  padding: 15px 25px;
+  width: auto;
+  }
+  
+blockquote { 
+  background: #dddddd;
+  font-style: italic;
+  }
+      
+code { 
+  background: #dddddd; 
+  font-style: monospace;
+  }
+
+
+/* Misc CKEditor Styles Tags
+------------------------------------------------------*/
+tt, kbd, samp, code   {font-family: monospace;}
+cite                  {font-style: italic; padding: 10px;}
+  
+small, .small         {font-size: 70%;}
+big, .big             {font-size: 150%;}
+
+address               {display: inline; font-style: italic; }
+q                     {font-style: italic; }
+var                   {font-weight: bold; }
+del                   {text-decoration: line-through;}
+
+.error, 
+.errors li, 
+.errorlist li        {color: #cc2222;}
+
+
+ul.errorlist {
+  padding: 0;
+  margin-top: 5px;
+  
+  li{
+    list-style: none outside none;
+    text-align: right;
+    width: auto;
+    }
+  }
+  
+label.required{ 
+  font-weight: bold; 
+  
+  &:after { 
+    content: '*'; 
+    color: #cc2222; 
+    }
+  }
+  
+
+div.required {
+  label{ 
+  font-weight: bold; 
+    
+    &:after { 
+      color: #cc2222;
+      content: "*";
+      font-size: 100%; 
+      }
+    }
+    span.after { 
+      color: #cc2222;
+      content: "*";
+      font-size: 100%; 
+      }
+    &.error {
+      input[type="text"],
+      textarea,
+      select {
+        border: 2px solid #cc2222;
+      }
+    }  
+  }
+
+  
+  
+/* Old Habits Die Hard
+------------------------------------------------------*/ 
+.nm {
+  margin-bottom: 0px !important;
+  } 
+  
