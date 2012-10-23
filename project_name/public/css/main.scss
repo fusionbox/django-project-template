@@ -1,5 +1,16 @@
 @import "common.scss";
 
+/*
+ * Main SCSS File - SCSS v1.0
+ * last edited 10/22/12
+ * @author ... - Fusionbox, Inc. 
+ * http://www.fusionbox.com
+ *
+ *
+ *
+ */
+ 
+ 
 /* Fonts & Colors
 ------------------------------------------------------*/
 
@@ -46,7 +57,6 @@ $gutter: 30px;
 /* Layout
 ------------------------------------------------------*/
 body {
-  background: url('../image/bg-pattern.jpg');
   color: #535353;
   font-size: 62.5%;
 }
@@ -201,21 +211,6 @@ section.main {
 }
 
 
-div.hr {
-  background: #f5f7f9;
-  border-top: 1px solid #b0d4ea;
-  height: 3px;
-  margin-bottom: 25px;
-  margin-top: 10px;
-  
-  &.dashed {
-    background: transparent;
-    border-top: 1px dashed #c8c7c9;
-    height: 1px;
-    margin-top: 25px;
-  }
-} 
-  
 /* Footer
 ------------------------------------------------------*/  
 footer {
@@ -261,27 +256,9 @@ footer {
   }
 }
 
-.code{
-  color: #fff;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 18px;
-  margin-right: 5px;
-  padding: 5px 0px;
-  text-align: center;
-  width: 25px;
-  
-  &.mm {
-    background: #333333;
-  }
-  &.pc {
-    background: #666666;
-  }
-}
 
-
-/* Fonts */
+/* Font Styles
+------------------------------------------------------*/
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
@@ -363,6 +340,7 @@ ul, ol {
   }
 }  
 
+
 p, article {
   margin-bottom: 10px;
 }
@@ -373,6 +351,28 @@ a {
   &:hover, &:active {
     @include transition;
     color: lighten($blue,15%);
+  }
+}
+
+
+/* Misc. 
+------------------------------------------------------*/
+.code{
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-right: 5px;
+  padding: 5px 0px;
+  text-align: center;
+  width: 25px;
+  
+  &.mm {
+    background: #333333;
+  }
+  &.pc {
+    background: #666666;
   }
 }
 
@@ -419,6 +419,25 @@ td {
   display: block;
   width: $width;
 }
+
+
+/* HR
+------------------------------------------------------*/
+div.hr {
+  background: #f5f7f9;
+  border-top: 1px solid #b0d4ea;
+  height: 3px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  
+  &.dashed {
+    background: transparent;
+    border-top: 1px dashed #c8c7c9;
+    height: 1px;
+    margin-top: 25px;
+  }
+} 
+
 
 /* Buttons
 ------------------------------------------------------*/
