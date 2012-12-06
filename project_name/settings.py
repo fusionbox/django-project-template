@@ -75,7 +75,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'fusionbox.error_logging.middleware.FusionboxCommonMiddleware',
+    'raven.contrib.django.middleware.Sentry404CatchMiddleware',
+    #'fusionbox.error_logging.middleware.FusionboxCommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -112,34 +113,55 @@ INSTALLED_APPS = (
     'south',
     'django_extensions',
     'djangosecure',
+    'bandit',
+    'raven.contrib.django',
 )
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
+    'disable_existing_loggers': True,
+    'root': {
+        'level': 'INFO',
+        'handlers': ['sentry'],
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+        'sentry': {
+            'level': 'INFO',
+            'class': 'raven.contrib.django.handlers.SentryHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
         }
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
+        'django.db.backends': {
             'level': 'ERROR',
-            'propagate': True,
+            'handlers': ['console'],
+            'propagate': False,
         },
-    }
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
 }
 
+# Sentry takes care of this for us now.
 # FusionboxCommonMiddeleware setting
-FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
+#FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
 
 SCSS_IMPORTS = (
         STATICFILES_DIRS[0] + '/css',
@@ -169,6 +191,7 @@ IGNORABLE_404_URLS = (
         re.compile(r'\.(php|cgi)$'),
         re.compile(r'/null/?$'),
         re.compile(r'^/phpmyadmin/', re.IGNORECASE),
+        re.compile(r'^/favicon\.ico.*$'),
         re.compile(r'^/wp-admin/'),
         re.compile(r'^/cgi-bin/'),
         re.compile(r'^(?!/static/).*\.(css|js)/?$'),
@@ -224,3 +247,13 @@ if not DEBUG:
     TEMPLATE_LOADERS = (
             ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
             )
+
+try:
+    assert bool(SENTRY_DSN)
+except NameError, AssertionError:
+    if DEBUG:
+        import warnings
+        warnings.warn('Missing Sentry DSN Value.  Error reporting will not be reported to sentry')
+    else:
+        from django.core.exceptions import ImproperlyConfigured
+        raise ImproperlyConfigured('DSN Value Missing.  Error reporting will not be reported to sentry')
