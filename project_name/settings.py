@@ -75,7 +75,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    'raven.contrib.django.middleware.Sentry404CatchMiddleware',
+    # 'raven.contrib.django.middleware.Sentry404CatchMiddleware',
     #'fusionbox.error_logging.middleware.FusionboxCommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -164,8 +164,8 @@ LOGGING = {
 #FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
 
 SCSS_IMPORTS = (
-        STATICFILES_DIRS[0] + '/css',
-        )
+    os.path.join(STATICFILES_DIRS[0], 'css'),
+)
 
 # django-compressor setting
 COMPRESS_ENABLED = True
@@ -173,9 +173,9 @@ COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/x-scss', 'pyscss {infile} -o {outfile} %s' %
-      '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])
-      )
+    ('text/x-scss', 'python -mscss {infile} -o {outfile} %s' %
+     '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])
+    )
 )
 SESSION_COOKIE_HTTPONLY = True
 
