@@ -1,7 +1,7 @@
 -e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 -e git://github.com/fusionbox/django-fusionbox-error_logging.git#egg=django_fusionbox_error_logging
 -e git://github.com/Kronuz/pyScss@a857aef24b5bc80018d33f1131e6bd90ed30e270#egg=pyscss
-Django==1.4.1
+Django==1.4.3
 South
 Werkzeug
 django-cachebuster
