@@ -93,7 +93,7 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 FORCE_SCRIPT_NAME = ''
 
 TEMPLATE_DIRS = (
-        os.path.join(PROJECT_PATH, 'templates')
+    os.path.join(PROJECT_PATH, 'templates'),
 )
 
 INSTALLED_APPS = (
