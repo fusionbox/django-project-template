@@ -71,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "django.core.context_processors.request",
-    )
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -174,32 +174,32 @@ COMPRESS_PRECOMPILERS = (
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
     ('text/x-scss', 'python -mscss {infile} -o {outfile} %s' %
-     '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])
-    )
+     '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])),
 )
 SESSION_COOKIE_HTTPONLY = True
 
 INTERNAL_IPS = (
-        '127.0.0.1',
-        '208.186.116.206',
-        '208.186.142.130',
-        )
+    '127.0.0.1',
+    '208.186.116.206',
+    '208.186.142.130',
+)
 
 EMAIL_LAYOUT = 'mail/base.html'
 
 IGNORABLE_404_URLS = (
-        re.compile(r'\.(php|cgi)$'),
-        re.compile(r'/null/?$'),
-        re.compile(r'^/phpmyadmin/', re.IGNORECASE),
-        re.compile(r'^/favicon\.ico.*$'),
-        re.compile(r'^/wp-admin/'),
-        re.compile(r'^/cgi-bin/'),
-        re.compile(r'^(?!/static/).*\.(css|js)/?$'),
-        )
+    re.compile(r'\.(php|cgi)$'),
+    re.compile(r'/null/?$'),
+    re.compile(r'^/phpmyadmin/', re.IGNORECASE),
+    re.compile(r'^/favicon\.ico.*$'),
+    re.compile(r'^/wp-admin/'),
+    re.compile(r'^/cgi-bin/'),
+    re.compile(r'^(?!/static/).*\.(css|js)/?$'),
+)
 
 # Import server specific settings 'settings_<hostname>.py'
 try:
-    import imp, sys
+    import imp
+    import sys
     module_name = 'settings_' + HOST_NAME
     module_info = imp.find_module(module_name, [PROJECT_PATH] + sys.path)
     live_settings = imp.load_module(module_name, *module_info)
@@ -216,7 +216,7 @@ else:
         globals()[attr] = getattr(live_settings, attr)
 
 try:
-    from settings_local import *
+    from settings_local import *  # NOQA
 except ImportError:
     pass
 
@@ -245,8 +245,8 @@ add_to_builtins('cachebuster.templatetags.cachebuster')
 if not DEBUG:
     # if not `running in runserver` would be a better condition here
     TEMPLATE_LOADERS = (
-            ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
-            )
+        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
+    )
 
 try:
     assert bool(SENTRY_DSN)

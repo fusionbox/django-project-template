@@ -19,5 +19,5 @@ SENTRY_DSN = ''
 
 # Tell raven to report errors even when debug is True
 RAVEN_CONFIG = {
-       'register_signals': True,
+    'register_signals': True,
 }
