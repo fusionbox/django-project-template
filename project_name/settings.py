@@ -250,7 +250,7 @@ if not DEBUG:
 
 try:
     assert bool(SENTRY_DSN)
-except NameError, AssertionError:
+except (NameError, AssertionError):
     if DEBUG:
         import warnings
         warnings.warn('Missing Sentry DSN Value.  Error reporting will not be reported to sentry')
