@@ -1,0 +1,22 @@
+{% load uncaptcha %}
+
+{% csrf_token %}
+{% if form.uncaptcha %}
+  {% uncaptcha %}
+{% endif %}
+{{ next_input }}
+{{ form.non_field_errors }}
+
+{% if form.fieldsets %}
+  {% for fieldset in form.fieldsets %}
+    <fieldset>
+      {% include "partials/_fieldset_as_divs.html" %}
+    </fieldset>
+  {% endfor %}
+{% else %}
+  <fieldset>
+  {% for field in form %}
+    {% include "partials/_field_as_div.html" %}
+  {% endfor %}
+  </fieldset>
+{% endif %}

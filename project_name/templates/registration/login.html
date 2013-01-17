@@ -6,13 +6,7 @@
 {% block content %}
   <h1>{% trans "Log In" %}</h1>
   <form method="post">
-    {% csrf_token %}
-    <fieldset>
-      {{ form.non_field_errors }}
-      {% for field in form %}
-          {% include "partials/_field_as_div.html" %}
-      {% endfor %}
-    </fieldset>
+    {% include "partials/_form_as_fieldsets.html" %}
     <p class="submitRow"><input type="submit" value="{% trans "Log In" %}" /></p>
   </form>
   <p>

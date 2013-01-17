@@ -1,12 +1,14 @@
 {% if field.is_hidden %}
   {{ field }}
 {% else %}
-  <div class="formField {{ field.css_classes }}{% if required %} required{% endif %} {{ field.html_name }}">
-    {{ field.errors }}
-    {{ field.label_tag }}
-    {{ field }}
-    {% if help_text %}
-      <p class="help">{{ help_text|safe }}</p>
+<div class="{{ field.css_classes }} {{ field.html_name }}{% if required %} required{% endif %} formField">
+    {{field.label_tag}}
+
+    {% if field.help_text %}
+      <p class="help_text">{{ field.help_text }}</p>
     {% endif %}
+
+    {{field}}
+    {{field.errors}}
   </div>
 {% endif %}
