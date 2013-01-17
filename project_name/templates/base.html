@@ -58,7 +58,7 @@
           <nav class="top">
             {% highlight_here %}
               <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
@@ -89,7 +89,7 @@
           {% block breadcrumb %}
           <p class="breadcrumb">
             <span>
-            <a href="/">Home</a> {% block breadcrumbtail %}{% endblock %}
+              <a href="{% url 'home' %}">Home</a> {% block breadcrumbtail %}{% endblock %}
             </span>
           </p>
           {% endblock %}

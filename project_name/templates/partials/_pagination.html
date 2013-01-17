@@ -1,0 +1,24 @@
+{% if page_obj.has_other_pages %}
+  <div class="pagination paginator">
+    {% if page_obj.has_previous %}
+      <span class="page"><a href="?{{ page_obj.previous_page_number.querystring }}">&#8249; Previous</a></span>
+    {% endif %}
+    {% for page in page_obj.pages %}
+      {% if page %}
+        {% if page == page_obj.number %}
+          <span class="page">{{ page }}</span>
+        {% else %}
+          <span class="page"><a href="?{{ page.querystring }}">{{ page }}</a></span>
+        {% endif %}
+      {% else %}
+        <span class="page">&#8230;</span>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <span class="page"><a href="?{{ page_obj.next_page_number.querystring }}">Next &#8250;</a></span>
+    {% endif %}
+    <span class="pagination_meta">
+      Results {{ page_obj.start_index }}-{{ page_obj.end_index }} of {{ page_obj.paginator.count }}
+    </span>
+  </div>
+{% endif %}

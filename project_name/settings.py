@@ -34,6 +34,9 @@ SITE_ID = 1
 USE_L10N = True
 USE_TZ = True
 
+# Set custom user model
+AUTH_USER_MODEL = 'accounts.User'
+
 # Set Sorl Thumbnailer to png to preserve transparent backgrounds
 THUMBNAIL_FORMAT = 'PNG'
 
@@ -97,7 +100,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
+    #'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
@@ -115,6 +118,8 @@ INSTALLED_APPS = (
     'djangosecure',
     'bandit',
     'raven.contrib.django',
+
+    'accounts',
 )
 
 LOGGING = {
