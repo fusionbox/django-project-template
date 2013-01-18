@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.utils.translation import ugettext_lazy as _
 
-from fusionbox.forms import BaseModelForm
+from fusionbox.forms import BaseModelForm, BetterReadOnlyPasswordHashWidget
 
 from accounts.models import User
 
@@ -48,10 +48,13 @@ class UserCreationForm(BaseModelForm):
 
 
 class UserChangeForm(BaseModelForm):
-    password = ReadOnlyPasswordHashField(label=_("Password"),
+    password = ReadOnlyPasswordHashField(
+        label=_("Password"),
+        widget=BetterReadOnlyPasswordHashWidget,
         help_text=_("Raw passwords are not stored, so there is no way to see "
                     "this user's password, but you can change the password "
-                    "using <a href=\"password/\">this form</a>."))
+                    "using <a href=\"password/\">this form</a>."),
+    )
 
     class Meta:
         model = User
