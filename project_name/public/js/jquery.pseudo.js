@@ -27,7 +27,7 @@
 		inject('after', elem);
 		elem.runtimeStyle.behavior = null;
 	};
-	
+
 	if(document.createStyleSheet) {
 		var o = document.createStyleSheet(null, 0);
 		o.addRule('.dummy','display: static;');
