@@ -1,7 +1,7 @@
 /*
  * Responsive SCSS File - SCSS v1.0
  * last edited 10/23/12
- * @author Justin Stollsteimer & Esther Ball-Babois - Fusionbox, Inc. 
+ * @author Justin Stollsteimer & Esther Ball-Babois - Fusionbox, Inc.
  * http://www.fusionbox.com
  *
  *
@@ -13,26 +13,26 @@
 ------------------------------------------------------*/
 @media screen and (max-width: 960px) {
   body {}
-  
+
   .adapt {
     header {
       min-width: 0px;
       width: 100%;
-      
+
       nav.top{
         min-width: 0px;
         width: 100%;
       }
     }
   }
-  
-  
+
+
   section.content {
     min-width: 0px;
     width: 100%;
   }
-  
-  
+
+
   footer {
     min-width: 0px;
     width: 100%;
@@ -41,17 +41,17 @@
 
 
 /* -- iPad, Device Width: 768px -- */
-@media screen and  (max-width: 959px) {  
+@media screen and  (max-width: 959px) {
   body {
   }
-  
-  .adapt {  
-     
+
+  .adapt {
+
     header {
       .inner {
         width: 748px;
       }
-      
+
       nav.top{
         ul {
           width: 748px;
@@ -59,32 +59,32 @@
       }
     }
   }
-  
-  
+
+
   section.content {
     .inner {
       width: 748px;
-    
+
       .left {
         margin-right: 15px;
         width: 155px;
       }
-      
+
       section.main {
         margin: 0;
         width: 52%;
-        
+
       }
-      
+
       aside {
       }
-      
+
       /* home */
-      
+
     }
   }
-  
-  
+
+
   footer {
     .inner {
       width: 748px;
@@ -94,11 +94,11 @@
 
 
 /* 7" Tablet, Device Width: 600px */
-@media screen and (max-width: 767px) { 
-  body {    
+@media screen and (max-width: 767px) {
+  body {
     overflow-x: hidden;
   }
-  
+
   body.shift {
     .adapt {
       left: 200px;
@@ -109,7 +109,7 @@
         -ms-transition: all .2s ease-in-out;
     }
   }
-  
+
   .adapt {
     position: relative;
     left: 0px;
@@ -118,13 +118,13 @@
       -moz-transition: all .2s ease-in-out;
       -o-transition: all .2s ease-in-out;
       -ms-transition: all .2s ease-in-out;
-          
-    header {      
+
+    header {
       .inner {
         width: 580px;
 
       }
-      
+
       nav.top{
         background: transparent;
         border: 0px;
@@ -135,12 +135,12 @@
         left: -200px;
         margin: 0;
         width: 200px;
-        
+
         .inner {
           margin-top: 142px;
           width: 180px;
         }
-        
+
         ul {
            background: transparent;
            float: none;
@@ -175,7 +175,7 @@
 
                li {
                  border: 0px;
-                                      
+
                  a:link,
                  a:visited {
                    color: $lightgrey;
@@ -189,7 +189,7 @@
 
                    li {
                      border: 0px;
-                     
+
                      a {
                        color: $grey;
                        font-size: 11px;
@@ -203,7 +203,7 @@
          }
       }
     }
-    
+
     section.breadcrumb{
       display: inline-block;
       height: auto;
@@ -212,17 +212,17 @@
       position: relative;
       width: 100%;
       z-index: 1;
-      
+
       .inner {
         width: 580px;
-        
+
         nav {
           font-size: 1.4em;
           font-weight: normal;
           text-transform: none;
         }
       }
-  
+
       a.mobileMenu:link,
       a.mobileMenu:visited {
         border-right: 1px solid #999;
@@ -233,87 +233,87 @@
         padding-right: 10px;
         text-decoration: none;
       }
-      
+
       p {
         font-size: 12px !important;
-      
+
         a:link,
         a:visited {
           font-size: 12px !important;
         }
       }
     }
-    
+
     section.content {
       .inner {
         width: 580px;
-        
+
         .left {
           display: none;
         }
-        
-        
+
+
         section.main {
           width: 100%;
-          
+
           p.breadcrumb {
             display: none !important;
           }
         }
-        
-        
+
+
         aside {
         }
-        
-        
+
+
         /* home */
-        
+
       }
     }
-      
-    
+
+
     footer {
       .inner {
         width: 580px;
       }
     }
-  } 
+  }
 }
 
 
 
 /* Mobile Landscape, Device Width: 480px */
-@media screen and (max-width: 599px) { 
+@media screen and (max-width: 599px) {
   body {
     /*overflow-x: hidden;*/
   }
-  
+
   .adapt {
     header {
       .inner {
         width: 460px;
       }
     }
-    
-    
+
+
     section.breadcrumb{
       .inner {
         width: 460px;
       }
     }
-    
-      
+
+
     section.content {
       .inner {
         width: 460px;
-      
-      
-        /* home */        
+
+
+        /* home */
 
       }
     }
-    
-     
+
+
     footer {
       .inner {
         width: 460px;
@@ -324,47 +324,47 @@
 
 
 /* Mobile Portrait, Device Width: 320px */
-@media screen and (max-width: 479px) { 
+@media screen and (max-width: 479px) {
   body {
     overflow-x: hidden;
   }
-  
+
   .adapt {
     header {
       .inner {
         width: 300px;
       }
-      
+
     }
-      
-    
+
+
     section.breadcrumb{
       .inner {
         width: 300px;
       }
     }
-      
-    
+
+
     section.content {
       .inner {
         width: 300px;
-        
+
         section.main {
-         
+
         }
-        
+
         aside {
-   
+
         }
-        
-        
+
+
         /* home */
 
-        
+
       }
     }
-     
-    
+
+
     footer {
       .inner {
         width: 300px;

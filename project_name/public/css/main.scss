@@ -3,14 +3,14 @@
 /*
  * Main SCSS File - SCSS v1.0
  * last edited 10/22/12
- * @author ... - Fusionbox, Inc. 
+ * @author ... - Fusionbox, Inc.
  * http://www.fusionbox.com
  *
  *
  *
  */
- 
- 
+
+
 /* Fonts & Colors
 ------------------------------------------------------*/
 
@@ -60,7 +60,7 @@ body {
   color: #535353;
   font-size: 62.5%;
 }
-  
+
 body, html {
   font-family: $font-default;
   line-height: 20px;
@@ -69,15 +69,15 @@ body, html {
 section.breadcrumb, section.content{
   @include clearfix;
   @include wrapper;
-  
+
   .inner {
     @include inner;
     display: block;
     width: $width;
   }
 }
-  
-  
+
+
 /* Header
 ------------------------------------------------------*/
 
@@ -86,47 +86,47 @@ header {
   margin: 0 auto;
   padding: 25px 0px 0px 0px;
   width: 960px;
-  
+
   .logo {
     float: left;
     height: 75px;
     text-decoration: none;
     width: 200px;
-    
+
     img {
       display: block;
     }
-    
-    @include clearfix; 
+
+    @include clearfix;
   }
-  
-  
+
+
   /* Nav
   ------------*/
   nav {
     margin: 0;
     width: 960px;
     z-index: 20;
-    
-    ul { 
+
+    ul {
       margin: 0;
       padding: 0;
-    
+
       li {
         display: inline-block;
         float: none;
         margin: 0;
         padding: 0;
         width: auto;
-      
+
         ul {
           display: none;
-          
+
           a {
             text-transform: none;
           }
         }
-  
+
         a {
           display: block;
           font-size: 14px;
@@ -135,22 +135,22 @@ header {
           padding: 0;
           text-decoration: none;
         }
-      
+
         &:first-child{
           margin: 0;
           padding: 0
         }
       }
     }
-    
+
     &.top {
       @include wrapper;
       @include clearfix;
     }
   }
-  
+
 }
-  
+
 
 
 /* Content
@@ -158,16 +158,16 @@ header {
 .content {
   padding: 20px 0px;
   position: relative;
-  
+
   .inner {
     @include clearfix;
     padding: 0px 0px 0px 0px;
     position: relative;
   }
-  
+
   /* Left Nav
   ----------------*/
-  
+
   div.left {
     @include default;
     @include html;
@@ -175,22 +175,22 @@ header {
     font-family: $font-primary;
     margin-right: $gutter;
     width: 190px;
-    
+
     p.title {
       font-size: 18px;
       font-weight: bold;
       line-height: 22px;
     }
-    
+
     ul {
       list-style: none !important;
       padding: 0px;
-      
+
       li {
         background: transparent !important;
         margin-bottom: 4px;
         padding: 0px;
-        
+
         a {
           display: block;
         }
@@ -206,21 +206,21 @@ header {
 section.main {
   @include default;
   @include html;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   width: 500px;
 }
 
 
 /* Footer
-------------------------------------------------------*/  
+------------------------------------------------------*/
 footer {
   display: block !important;
   font-family: $font-primary;
   padding: 0;
-  
+
   @include wrapper;
 
-  
+
   .inner {
     display: block;
     margin: 0 auto;
@@ -228,26 +228,26 @@ footer {
     text-align: center;
     width: 960px;
   }
-  
-  
+
+
   nav {
     display: none;
   }
-  
+
   p {
     font-size: 12px;
     font-weight: normal;
     text-align: center;
-    
+
     a {
       color: #a3cfe9;
       margin: 0px 8px;
-      
+
       &:hover {
         color: #fff;
       }
     }
-    
+
     span {
       color: #a3cfe9;
       margin: 0px 8px;
@@ -279,7 +279,7 @@ h1 {
   line-height: 36px;
   margin-bottom: 10px;
 }
-  
+
 h2 {
   color: #007ac3;
   font-size: 18px;
@@ -287,7 +287,7 @@ h2 {
   line-height: 28px;
   margin-bottom: 8px;
 }
-  
+
 h3 {
   color: #535353;
   font-size: 16px;
@@ -295,7 +295,7 @@ h3 {
   line-height: 24px;
   margin-bottom: 5px;
 }
-  
+
 h4 {
   color: $black;
   line-height: 17px;
@@ -303,7 +303,7 @@ h4 {
   font-weight: bold;
   margin-bottom: 5px;
 }
-  
+
 h5 {
   color: $black;
   line-height: 12px;
@@ -311,7 +311,7 @@ h5 {
   font-weight: bold;
   margin-bottom: 5px;
 }
-  
+
 h6 {
   color: $black;
   line-height: 11px;
@@ -323,22 +323,22 @@ h6 {
 ul.image {
   list-style-type: none;
   padding: 0px;
-  
+
   li {
     margin-bottom: 8px;
     padding: 0px 0px 0px 28px;
   }
 }
-  
+
 ul, ol {
   li {
     font-size: 1.4em;
-  
+
     li {
       font-size: 1.2em;
     }
   }
-}  
+}
 
 
 p, article {
@@ -347,7 +347,7 @@ p, article {
 
 a {
   color: $blue;
-  
+
   &:hover, &:active {
     @include transition;
     color: lighten($blue,15%);
@@ -355,7 +355,7 @@ a {
 }
 
 
-/* Misc. 
+/* Misc.
 ------------------------------------------------------*/
 .code{
   color: #fff;
@@ -367,7 +367,7 @@ a {
   padding: 5px 0px;
   text-align: center;
   width: 25px;
-  
+
   &.mm {
     background: #333333;
   }
@@ -394,7 +394,7 @@ blockquote {
   font-style: italic;
   font-family: $font-default;
   padding: 10px 20px;
-  
+
   p {
     margin: 0px !important;
   }
@@ -429,14 +429,14 @@ div.hr {
   height: 3px;
   margin-bottom: 25px;
   margin-top: 10px;
-  
+
   &.dashed {
     background: transparent;
     border-top: 1px dashed #c8c7c9;
     height: 1px;
     margin-top: 25px;
   }
-} 
+}
 
 
 /* Buttons
@@ -459,22 +459,22 @@ a.button, input[type='submit'], button, span.button {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  
+
   &:hover {
     @include gradient($blue,lighten($blue,10%));
     @include shadow(lighten($blue,10%),0px,0px,3px);
   }
-  
+
   &.block {
     display: block;
   }
-  
+
   &.big {
     font-size: 20px;
     line-height: 24px;
     padding: 10px 50px 10px 10px;
   }
-  
+
   &.go {
     @include shadow(transparent,0px,0px,0px);
     border: 0px;
@@ -495,23 +495,23 @@ a.button, input[type='submit'], button, span.button {
   font-size: 100%;
   color: #007ac3;
   }
-  
+
 .required ul li label:after,
 .required ul li label.after {
   content: "";
   }
 
-  
+
 label {
   line-height: 20px;
   padding-top: 4px;
 }
 
-input[type='text'], 
-input[type='number'], 
-input[type='password'], 
-select, 
-textarea, 
+input[type='text'],
+input[type='number'],
+input[type='password'],
+select,
+textarea,
 input[type='file'] {
   border: 1px solid #bababa;
   display: inline-block;
@@ -532,18 +532,18 @@ input[type='submit'] {
   margin-bottom: 15px;
   padding: 5px 15px;
   text-transform: none;
-  
+
   &:hover {
     background-color: #cc6600;
     box-shadow: 0 1px 10px #333333 inset;
-    
+
   }
 }
 
 select {
   padding: 3px;
 }
-  
+
 select.state {
   width: 200px;
 }

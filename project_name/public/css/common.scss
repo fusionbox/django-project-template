@@ -5,14 +5,14 @@
  * http://www.fusionbox.com
  *
  *
- * Lists: Line 
- * HR: Line 
- * Table: Line 
- * Form Elements: Line 
+ * Lists: Line
+ * HR: Line
+ * Table: Line
+ * Form Elements: Line
  *
  */
 
-$cyan:        #009ddb; 
+$cyan:        #009ddb;
 $magenta:     #d80073;
 $yellow:      #fbe200;
 $black:       #000000;
@@ -24,7 +24,7 @@ $grey:        #5e5e5e;
 $k53:         #535353;
 $k35:         #353535;
 
- 
+
 /* SASS Mixins
 --------------------------------------------------*/
 @mixin transition($basic: all 0.25s ease 0s) {
@@ -151,7 +151,7 @@ $k35:         #353535;
 }
 
 
-/* Floating 
+/* Floating
 ------------------------------------------------------*/
 
 @mixin fl{
@@ -169,10 +169,10 @@ $k35:         #353535;
   display: inline;
   float: right;
   }
-  
 
-/* Buttons 
-------------------------------------------------------*/  
+
+/* Buttons
+------------------------------------------------------*/
 
 input[type='submit'], a.button {
   @include rounded(5px);
@@ -190,14 +190,14 @@ input[type='submit'], a.button {
   margin: 0px;
   padding: 10px 30px 8px;
   text-align: center;
-  
+
   &:hover {
     @include gradient(#B12445, #F37B8B);
   }
 }
-    
-/* Forms 
-------------------------------------------------------*/  
+
+/* Forms
+------------------------------------------------------*/
 
 input[type="email"],
 input[type='file'],
@@ -213,12 +213,12 @@ select {
   line-height: 1em;
   margin: 0px;
   padding: 5px;
-  
+
   &:focus {
     border-color: $magenta;
     color: $black;
     }
-  }  
+  }
 
 input[type="search"] {
   height: 26px;
@@ -226,10 +226,10 @@ input[type="search"] {
   -webkit-appearance: textfield;
   }
 
-select                  {height: 32px !important;}  
+select                  {height: 32px !important;}
 textarea                {height: 100px !important;}
-    
-    
+
+
 label{
   color: #000;
   display: inline;
@@ -237,7 +237,7 @@ label{
   margin-right: 15px;
   margin-top: 4px;
   width: 145px;
-  
+
   span,
   &.required span{
     font-weight: normal;
@@ -246,15 +246,15 @@ label{
     }
   }
 
-      
+
 aside {
   input[type="text"]    {width: 215px;}
   select                {width: 225px;}
   textarea              {height: 60px !important; width: 215px;}
-  
+
   .check label          {margin: 0px; width: auto;}
   }
-  
+
 
 /* Radio and Checkboxes
 ------------------------------------------------------*/
@@ -263,23 +263,23 @@ form span {
   display: block;
   float: left;
   width: 100%;
-  
+
   &.radio {
     margin-right: 5px;
     width: auto;
-    
+
     label {
-      margin: 0px; 
+      margin: 0px;
       width: auto;
-      }  
+      }
     }
   }
 
 form span.radio.required label {
   font-weight: normal;
-  }  
+  }
 
-input[type="checkbox"], 
+input[type="checkbox"],
 input[type="radio"]{
   display: inline-block;
   height: auto;
@@ -289,11 +289,11 @@ input[type="radio"]{
 
 input[type="radio"] {
   float: left;
-  margin-right: 5px; 
+  margin-right: 5px;
   }
 
-  
-/* Lists (un-ordered, ordered and definition lists)  
+
+/* Lists (un-ordered, ordered and definition lists)
 ------------------------------------------------------*/
 ul, ol, dl {
   clear: left;
@@ -303,29 +303,29 @@ ul, ol, dl {
   margin: 0px 0px 8px 0px;
   width: auto;
   }
-  
+
 ul {
   list-style-type: disc;
   padding: 0px 0px 0px 18px;
-  
+
   li {
     color: #4d4f53;
     font-size: 14px;
     font-weight: normal;
     margin: 0px;
     padding: 0px 0px 4px 0px;
-    
+
     ol {
       float: none;
       margin: 4px 0px;
       padding: 0px 0px 0px 18px;
-      
+
       li {
         font-size: 14px;
         line-height: 18px;
         margin: 0px;
         padding: 0px 0px 4px 0px;
-        
+
         li {
           font-size: 12px;
           line-height: 16px;
@@ -337,27 +337,27 @@ ul {
     }
   }
 
-ol {  
+ol {
   color: #4d4f53;
   list-style: decimal;
-  padding: 0px 0px 0px 26px;  
-  
+  padding: 0px 0px 0px 26px;
+
   li {
     font-size: 14px;
     margin: 0px;
     padding: 0px 0px 4px 0px;
-    
+
     ol {
       float: none;
       margin: 4px 0px;
       padding: 0px 0px 0px 18px;
-      
+
       li {
         font-size: 14px;
         line-height: 18px;
         margin: 0px;
         padding: 0px 0px 4px 0px;
-        
+
         li {
           font-size: 12px;
           line-height: 16px;
@@ -367,7 +367,7 @@ ol {
         }
       }
     }
-  } 
+  }
 
 dl dt {
   color: #4d4f53;
@@ -377,18 +377,18 @@ dl dt {
   padding: 0px;
   }
 
-dl dd { 
+dl dd {
   color: #4d4f53;
   font-size: 100%;
   font-weight: normal;
   margin: 0px;
   padding: 0px 0px 8px 8px;
   }
-  
+
 
 /* HR (usable as HTML property or div class)
 ------------------------------------------------------*/
-hr, 
+hr,
 div.hr {
   @include default;
   border: 0px none;
@@ -400,41 +400,41 @@ div.hr {
 
 /*| Table (styling for generic table)
 ------------------------------------------------------*/
-table { 
+table {
   border-collapse: collapse;
-  display: table; 
+  display: table;
   margin: 0px 0px 15px 0px;
-  width: 100%; 
+  width: 100%;
   float: none;
 }
 
-th { 
+th {
   border: 1px solid;
-  font-weight: bold; 
-  padding: 5px 8px; 
+  font-weight: bold;
+  padding: 5px 8px;
 }
 
-td { 
-  border: 1px solid; 
-  padding: 5px 8px; 
+td {
+  border: 1px solid;
+  padding: 5px 8px;
 }
 
 
-/* Common Classes 
+/* Common Classes
 ------------------------------------------------------*/
 strong, .strong {
-  font-weight: bold; 
+  font-weight: bold;
   }
-  
-em, 
-.em { 
-  font-style: italic; 
+
+em,
+.em {
+  font-style: italic;
   }
-  
+
 sup {
   bottom: 6px;
   font-size: 60% !important;
-  position: relative; 
+  position: relative;
   }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -452,14 +452,14 @@ code {
   padding: 15px 25px;
   width: auto;
   }
-  
-blockquote { 
+
+blockquote {
   background: #dddddd;
   font-style: italic;
   }
-      
-code { 
-  background: #dddddd; 
+
+code {
+  background: #dddddd;
   font-style: monospace;
   }
 
@@ -468,7 +468,7 @@ code {
 ------------------------------------------------------*/
 tt, kbd, samp, code   {font-family: monospace;}
 cite                  {font-style: italic; padding: 10px;}
-  
+
 small, .small         {font-size: 70%;}
 big, .big             {font-size: 150%;}
 
@@ -477,46 +477,46 @@ q                     {font-style: italic; }
 var                   {font-weight: bold; }
 del                   {text-decoration: line-through;}
 
-.error, 
-.errors li, 
+.error,
+.errors li,
 .errorlist li        {color: #cc2222;}
 
 
 ul.errorlist {
   padding: 0;
   margin-top: 5px;
-  
+
   li{
     list-style: none outside none;
     text-align: right;
     width: auto;
     }
   }
-  
-label.required{ 
-  font-weight: bold; 
-  
-  &:after { 
-    content: '*'; 
-    color: #cc2222; 
+
+label.required{
+  font-weight: bold;
+
+  &:after {
+    content: '*';
+    color: #cc2222;
     }
   }
-  
+
 
 div.required {
-  label{ 
-  font-weight: bold; 
-    
-    &:after { 
+  label{
+  font-weight: bold;
+
+    &:after {
       color: #cc2222;
       content: "*";
-      font-size: 100%; 
+      font-size: 100%;
       }
     }
-    span.after { 
+    span.after {
       color: #cc2222;
       content: "*";
-      font-size: 100%; 
+      font-size: 100%;
       }
     &.error {
       input[type="text"],
@@ -524,14 +524,13 @@ div.required {
       select {
         border: 2px solid #cc2222;
       }
-    }  
+    }
   }
 
-  
-  
+
+
 /* Old Habits Die Hard
-------------------------------------------------------*/ 
+------------------------------------------------------*/
 .nm {
   margin-bottom: 0px !important;
-  } 
-  
+  }
