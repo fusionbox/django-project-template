@@ -173,7 +173,7 @@ COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
     ('text/less', 'lessc {infile} {outfile}'),
     ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/x-scss', 'python -mscss {infile} -o {outfile} %s' %
+    ('text/x-scss', 'python -mscss.tool {infile} -o {outfile} %s' %
      '-I ' + ' '.join(['"%s"' % d for d in SCSS_IMPORTS])),
 )
 SESSION_COOKIE_HTTPONLY = True
