@@ -1,4 +1,4 @@
--e git://github.com/fusionbox/fusionbox-fabric-helpers.git@0214090f3f07cf1a04606472b8abb140f1eb6590#egg=fusionbox_fabric_helpers
+-e git://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox_fabric_helpers
 -e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 -e git://github.com/fusionbox/django-fusionbox-error_logging.git#egg=django_fusionbox_error_logging
 -e git://github.com/Kronuz/pyScss@1c4335b1e38908eb77563028edd501c435d18642#egg=pyscss
