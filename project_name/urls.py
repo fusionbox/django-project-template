@@ -7,7 +7,7 @@ admin.autodiscover()
 from django.conf import settings
 
 urlpatterns = patterns('',
-    url('^robots.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain'),
+    url('^robots.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     # url('^sitemap.xml$', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml'),
 
     # Examples:
