@@ -156,8 +156,15 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
+        'filer': {
+            'level': 'WARNING',
+            'handler': ['sentry', 'console'],
+            'propagate': False,
+        },
     },
 }
+
+FILER_ENABLE_LOGGING = True
 
 # Sentry takes care of this for us now.
 # FusionboxCommonMiddeleware setting
