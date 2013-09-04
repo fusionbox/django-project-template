@@ -1,4 +1,3 @@
--e git://github.com/fusionbox/django-fusionbox-error_logging.git#egg=django_fusionbox_error_logging
 -e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 -e git://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox_fabric_helpers
 Django==1.5.2
@@ -11,6 +10,16 @@ django-email-bandit
 django-extensions
 django-grappelli
 django-secure
-raven==2.0.10
+django-dotenv
 pyScss
-# psycopg2
+# Raven for sentry error reporting
+raven==2.0.10
+#psycopg2
+## AWS/Heroku
+#gunicorn
+#boto==2.10.0
+#django-storages==1.1.8
+#django-herokuify==1.0.pre3
+#pylibmc==1.2.3
+#newrelic==1.13.1.31
+#django-postgrespool==0.2.4
