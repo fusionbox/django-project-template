@@ -53,7 +53,7 @@ EMAIL_USE_TLS = True
 # Hijack outbound email and send it all to `BANDIT_EMAIL`
 if DEBUG is True:
     EMAIL_BACKEND = 'bandit.backends.smtp.HijackSMTPBackend'
-    BANDIT_EMAIL = 'amerriam@fusionbox.com'
+    BANDIT_EMAIL = 'paula@fusionbox.com'
 
 from memcacheify import memcacheify
 
