@@ -1,5 +1,4 @@
 -e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
--e git://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox_fabric_helpers
 Django==1.5.2
 South
 Werkzeug
@@ -12,14 +11,18 @@ django-grappelli
 django-secure
 django-dotenv
 pyScss
-# Raven for sentry error reporting
+## Fabric
+fusionbox-fabric-helpers==0.3.5
+## Raven for sentry error reporting
 raven==2.0.10
-#psycopg2
 ## AWS/Heroku
-#gunicorn
-#boto==2.10.0
-#django-storages==1.1.8
-#django-herokuify==1.0.pre3
-#pylibmc==1.2.3
-#newrelic==1.13.1.31
-#django-postgrespool==0.2.4
+psycopg2
+gunicorn
+boto==2.10.0
+django-storages==1.1.8
+django-herokuify==1.0.pre3
+pylibmc==1.2.3
+newrelic==1.13.1.31
+django-postgrespool==0.2.4
+## Running the app from the Procfile
+honcho
