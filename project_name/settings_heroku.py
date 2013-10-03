@@ -19,7 +19,7 @@ EMAIL_HOST_PASSWORD
 from .settings_base import *  # NOQA
 from .settings_aws import *  # NOQA
 
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', False)
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
@@ -30,7 +30,10 @@ DATABASES['default']['ENGINE'] = 'django_postgrespool'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '{{ project_name }}.dev.fusionbox.com',
+    '{{ project_name }}.herokuapp.com',
+]
 
 # Django Compressor
 COMPRESS_ENABLED = True
@@ -53,8 +56,26 @@ EMAIL_USE_TLS = True
 # Hijack outbound email and send it all to `BANDIT_EMAIL`
 if DEBUG is True:
     EMAIL_BACKEND = 'bandit.backends.smtp.HijackSMTPBackend'
-    BANDIT_EMAIL = 'paula@fusionbox.com'
+    BANDIT_EMAIL = os.environ.get('BANDIT_EMAIL', 'paula@fusionbox.com')
 
 from memcacheify import memcacheify
 
 CACHES = memcacheify()
+
+if not DEBUG:
+    # if not `running in runserver` would be a better condition here
+    TEMPLATE_LOADERS = (
+        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
+    )
+
+# In a non-DEBUG environment, don't allow the app to start without a
+# `SENTRY_DSN` value
+try:
+    assert bool(SENTRY_DSN)
+except (NameError, AssertionError):
+    if DEBUG:
+        import warnings
+        warnings.warn('Missing Sentry DSN Value.  Error reporting will not be reported to sentry')
+    else:
+        from django.core.exceptions import ImproperlyConfigured
+        raise ImproperlyConfigured('DSN Value Missing.  Error reporting will not be reported to sentry')

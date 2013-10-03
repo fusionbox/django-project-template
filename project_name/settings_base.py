@@ -55,7 +55,8 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-SECRET_KEY = '{{ secret_key }}'
+# Production installs need to have this environment variable set
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'not-really-a-very-good-secret-key-now-is-it-so-set-a-better-one')
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -209,50 +210,16 @@ IGNORABLE_404_URLS = (
     re.compile(r'^(?!/static/).*\.(css|js)/?$'),
 )
 
-# Machine specific settings that are never stored in git should go in
-# `{{ project_name }}/settings_local.py`
+# For sorl thumbnailer
 try:
-    from settings_local import *  # NOQA
-except ImportError:
-    pass
-
-#|
-#| Items which depend on a value that may be set in settings_local,
-#| settings_dev, or other external settings files should go below here.
-#|
-
-try:
-    TEMPLATE_DEBUG
-except NameError:
-    TEMPLATE_DEBUG = DEBUG
-
-try:
-    THUMBNAIL_DEBUG
+    THUMBNAIL_DEBUG  # NOQA
 except NameError:
     THUMBNAIL_DEBUG = DEBUG
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
-
-if not DEBUG:
-    # if not `running in runserver` would be a better condition here
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
-    )
 
 # Attempt to configure sentry from an environment variable.
 try:
     SENTRY_DSN = os.environ['SENTRY_DSN']
 except KeyError:
     pass
-
-# In a non-DEBUG environment, don't allow the app to start without a
-# `SENTRY_DSN` value
-try:
-    assert bool(SENTRY_DSN)
-except (NameError, AssertionError):
-    if DEBUG:
-        import warnings
-        warnings.warn('Missing Sentry DSN Value.  Error reporting will not be reported to sentry')
-    else:
-        from django.core.exceptions import ImproperlyConfigured
-        raise ImproperlyConfigured('DSN Value Missing.  Error reporting will not be reported to sentry')
