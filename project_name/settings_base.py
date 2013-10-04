@@ -23,12 +23,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'sqlite_database',
-    }
-}
+import dj_database_url
+DATABASES = dj_database_url.config(default='sqlite:///sqlite_database')
+
 TIME_ZONE = 'America/Denver'
 SITE_ID = 1
 USE_L10N = True
