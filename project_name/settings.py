@@ -227,6 +227,15 @@ try:
 except ImportError:
     pass
 
+# Try to import test settings
+if sys.argv[1] == 'test':
+    try:
+        from settings_test import *  # NOQA
+    except ImportError:
+        sys.stderr.write('!! Test settings (settings_test.py) not found.  Using host settings (settings_{host}.py) and local settings (settings_local.py).\n'.format(
+            host=HOST_NAME,
+        ))
+
 #|
 #| Items which depend on a value that may be set in settings_local,
 #| settings_dev, or other external settings files should go below here.
