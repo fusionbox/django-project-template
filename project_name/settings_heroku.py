@@ -19,12 +19,19 @@ EMAIL_HOST_PASSWORD
 from .settings_base import *  # NOQA
 from .settings_aws import *  # NOQA
 
-DEBUG = os.environ.get('DJANGO_DEBUG', False)
+if 'DJANGO_DEBUG' in os.environ:
+    DEBUG = (os.environ['DJANGO_DEBUG'] == 'True')
+else:
+    DEBUG = False
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
+
+SOUTH_DATABASE_ADAPTERS = {
+    'default': 'south.db.postgresql_psycopg2'
+}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
