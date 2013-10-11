@@ -23,6 +23,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES = dj_database_url.config(default='sqlite:///sqlite_database')
 
@@ -113,9 +114,21 @@ INSTALLED_APPS = (
     'djangosecure',
     'raven.contrib.django',
     'bandit',
+    'test_pep8',
 
     # Project
     '{{ project_name }}',
+)
+
+# test_pep8 config
+TEST_PEP8_DIRS = (
+    os.path.dirname(PROJECT_PATH),
+)
+TEST_PEP8_EXCLUDE = (
+    'migrations',
+)
+TEST_PEP8_IGNORE = (
+    'E501',  # Line length of 80 chars
 )
 
 LOGGING = {

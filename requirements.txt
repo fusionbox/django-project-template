@@ -26,3 +26,5 @@ newrelic==1.13.1.31
 django-postgrespool==0.2.4
 ## Running the app from the Procfile
 honcho
+## Django pep8 testing
+django-test-pep8==0.1

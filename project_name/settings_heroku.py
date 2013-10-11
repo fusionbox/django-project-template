@@ -24,9 +24,7 @@ if 'DJANGO_DEBUG' in os.environ:
 else:
     DEBUG = False
 
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+# setup connection pooling
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
 SOUTH_DATABASE_ADAPTERS = {
