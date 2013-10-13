@@ -12,19 +12,19 @@ django-secure
 django-dotenv
 pyScss
 ## Fabric
-fusionbox-fabric-helpers==0.3.5
+fusionbox-fabric-helpers
 ## Raven for sentry error reporting
-raven==2.0.10
+raven
 ## AWS/Heroku
 psycopg2
 gunicorn
-boto==2.10.0
-django-storages==1.1.8
-django-herokuify==1.0.pre3
-pylibmc==1.2.3
-newrelic==1.13.1.31
-django-postgrespool==0.2.4
+boto
+django-storages
+django-herokuify
+pylibmc
+newrelic
+django-postgrespool
 ## Running the app from the Procfile
 honcho
 ## Django pep8 testing
-django-test-pep8==0.1
+django-test-pep8
