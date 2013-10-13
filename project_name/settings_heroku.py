@@ -16,13 +16,11 @@ EMAIL_PORT
 EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD
 """
-from .settings_base import *  # NOQA
+from .settings import *  # NOQA
+from .settings_ssl import *  # NOQA
 from .settings_aws import *  # NOQA
 
-if 'DJANGO_DEBUG' in os.environ:
-    DEBUG = (os.environ['DJANGO_DEBUG'] == 'True')
-else:
-    DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG') == 'True'
 
 # setup connection pooling
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
@@ -59,19 +57,13 @@ EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = True
 
 # Hijack outbound email and send it all to `BANDIT_EMAIL`
-if DEBUG is True:
+if 'DJANGO_BANDIT_EMAIL' in os.environ:
     EMAIL_BACKEND = 'bandit.backends.smtp.HijackSMTPBackend'
-    BANDIT_EMAIL = os.environ.get('BANDIT_EMAIL', 'paula@fusionbox.com')
+    BANDIT_EMAIL = os.environ.get('DJANGO_BANDIT_EMAIL', 'paula@fusionbox.com')
 
 from memcacheify import memcacheify
 
 CACHES = memcacheify()
-
-if not DEBUG:
-    # if not `running in runserver` would be a better condition here
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
-    )
 
 # In a non-DEBUG environment, don't allow the app to start without a
 # `SENTRY_DSN` value

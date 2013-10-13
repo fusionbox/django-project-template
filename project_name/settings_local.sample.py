@@ -1,9 +1,11 @@
 """
 To use this, create a `.env` with DJANGO_SETTINGS_MODULE={{ project_name }}.settings_local
 """
-from settings_base import *
+from settings import *
 
 DEBUG = True
+
+ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
