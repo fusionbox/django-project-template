@@ -159,7 +159,7 @@ LOGGING = {
         },
         'filer': {
             'level': 'WARNING',
-            'handler': ['sentry', 'console'],
+            'handlers': ['sentry', 'console'],
             'propagate': False,
         },
     },
