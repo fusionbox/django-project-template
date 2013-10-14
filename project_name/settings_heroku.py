@@ -76,3 +76,7 @@ except (NameError, AssertionError):
     else:
         from django.core.exceptions import ImproperlyConfigured
         raise ImproperlyConfigured('DSN Value Missing.  Error reporting will not be reported to sentry')
+
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
+)

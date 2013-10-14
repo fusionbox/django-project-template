@@ -22,3 +22,7 @@ BANDIT_EMAIL = 'plee@fusionbox.com'
 RAVEN_CONFIG = {
     'register_signals': True,
 }
+
+TEMPLATE_LOADERS = (
+    ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
+)

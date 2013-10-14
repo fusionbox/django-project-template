@@ -217,12 +217,6 @@ DEBUG = True
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
 
-if not any('runserver' in val for val in sys.argv):
-    # if not `running in runserver` would be a better condition here
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
-    )
-
 # Attempt to configure sentry from an environment variable.
 try:
     SENTRY_DSN = os.environ['SENTRY_DSN']
