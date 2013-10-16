@@ -106,6 +106,7 @@ INSTALLED_APPS = (
     'grappelli',  # Must go before admin.
     'django.contrib.admin',
 
+    'test_pep8',
     'debug_toolbar',
     'compressor',
     'fusionbox.core',
@@ -202,6 +203,17 @@ IGNORABLE_404_URLS = (
     re.compile(r'^/cgi-bin/'),
     re.compile(r'^(?!/static/).*\.(css|js)/?$'),
 )
+
+# Pep8 testing
+TEST_PEP8_DIRS = [
+    PROJECT_PATH,
+]
+TEST_PEP8_EXCLUDE = [
+    'migrations',
+]
+TEST_PEP8_IGNORE = [
+    'E501',
+]
 
 # Import server specific settings 'settings_<hostname>.py'
 try:
