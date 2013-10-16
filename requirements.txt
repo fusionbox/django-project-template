@@ -11,6 +11,7 @@ django-email-bandit
 django-extensions
 django-grappelli
 django-secure
+django-test-pep8
 raven==2.0.10
 pyScss
 # psycopg2
