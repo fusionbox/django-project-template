@@ -11,6 +11,7 @@ django-grappelli
 django-secure
 django-dotenv
 pyScss
+dj-database-url
 ## Fabric
 fusionbox-fabric-helpers
 ## Raven for sentry error reporting
