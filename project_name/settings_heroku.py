@@ -47,7 +47,7 @@ COMPRESS_STORAGE = STATICFILES_STORAGE
 if DEBUG is False:
     # Sanity check to be sure that we aren't running production without a
     # secure secret key.
-    assert not SECRET_KEY == 'not-really-a-very-good-secret-key-now-is-it-so-set-a-better-one'
+    assert SECRET_KEY != DEFAULT_SECRET_KEY
 
 # Email configuration
 EMAIL_HOST = os.environ['EMAIL_HOST']

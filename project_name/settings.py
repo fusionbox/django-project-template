@@ -42,7 +42,8 @@ STATICFILES_FINDERS = (
 )
 
 # Production installs need to have this environment variable set
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'not-really-a-very-good-secret-key-now-is-it-so-set-a-better-one')
+DEFAULT_SECRET_KEY = '{{ secret_key }}'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', DEFAULT_SECRET_KEY)
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
