@@ -1,7 +1,5 @@
--e git://github.com/fusionbox/django-fusionbox-error_logging.git#egg=django_fusionbox_error_logging
 -e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
--e git://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox_fabric_helpers
-Django==1.5.4
+Django
 South
 Werkzeug
 django-cachebuster
@@ -11,6 +9,24 @@ django-email-bandit
 django-extensions
 django-grappelli
 django-secure
-raven==2.0.10
+django-dotenv
 pyScss
-# psycopg2
+dj-database-url
+## Fabric
+fusionbox-fabric-helpers
+## Raven for sentry error reporting
+raven
+## AWS/Heroku
+psycopg2
+gunicorn
+boto
+django-storages
+django-herokuify
+pylibmc
+newrelic
+django-postgrespool
+## Running the app from the Procfile
+honcho
+## Django pep8 testing
+django-test-pep8
+python-memcached

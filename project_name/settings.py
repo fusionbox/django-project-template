@@ -1,34 +1,20 @@
 # Django settings for {{ project_name }} project.
 import os
-import socket
+import sys
 import re
 
-# These must be set to True if SSL is in use
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
-SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-HOST_NAME = socket.gethostname()
-
-DEBUG = True
-# We set template debug at the bottom of the settings file in case it is set in
-# any of the external settings files
-# TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Programmers', 'programmers@fusionbox.com'),
+    ('Programmers', 'programmers@fusionbox.com'),
 )
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'sqlite_database',
-    }
-}
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default='sqlite:///sqlite_database')}
+
 TIME_ZONE = 'America/Denver'
 SITE_ID = 1
 USE_L10N = True
@@ -55,7 +41,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-SECRET_KEY = '{{ secret_key }}'
+# Production installs need to have this environment variable set
+DEFAULT_SECRET_KEY = '{{ secret_key }}'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', DEFAULT_SECRET_KEY)
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -75,8 +63,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    # 'raven.contrib.django.middleware.Sentry404CatchMiddleware',
-    #'fusionbox.error_logging.middleware.FusionboxCommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -106,22 +92,38 @@ INSTALLED_APPS = (
     'grappelli',  # Must go before admin.
     'django.contrib.admin',
 
-    'debug_toolbar',
+    # 3rd party
     'compressor',
-    'fusionbox.core',
-    'fusionbox.error_logging',
+    'cachebuster',
     'south',
+    'debug_toolbar',
+    'fusionbox.core',
     'django_extensions',
     'djangosecure',
-    'bandit',
     'raven.contrib.django',
+    'bandit',
+    'test_pep8',
+
+    # Project
+    '{{ project_name }}',
+)
+
+# test_pep8 config
+TEST_PEP8_DIRS = (
+    os.path.dirname(PROJECT_PATH),
+)
+TEST_PEP8_EXCLUDE = (
+    'migrations',
+)
+TEST_PEP8_IGNORE = (
+    'E501',  # Line length of 80 chars
 )
 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
     'root': {
-        'level': 'INFO',
+        'level': 'WARNING',
         'handlers': ['sentry'],
     },
     'formatters': {
@@ -131,7 +133,7 @@ LOGGING = {
     },
     'handlers': {
         'sentry': {
-            'level': 'INFO',
+            'level': 'WARNING',
             'class': 'raven.contrib.django.handlers.SentryHandler',
         },
         'console': {
@@ -164,17 +166,11 @@ LOGGING = {
     },
 }
 
-FILER_ENABLE_LOGGING = True
-
-# Sentry takes care of this for us now.
-# FusionboxCommonMiddeleware setting
-#FUSIONBOX_SEND_BROKEN_LINK_EMAILS = True
-
+# django-compressor setting
 SCSS_IMPORTS = (
     os.path.join(STATICFILES_DIRS[0], 'css'),
 )
 
-# django-compressor setting
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/coffeescript', 'coffee --compile --stdio'),
@@ -183,6 +179,8 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'python -mscss.tool {infile} -o {outfile} %s' %
      ' '.join(['-I "%s"' % d for d in SCSS_IMPORTS])),
 )
+
+
 SESSION_COOKIE_HTTPONLY = True
 
 INTERNAL_IPS = (
@@ -191,7 +189,16 @@ INTERNAL_IPS = (
     '208.186.142.130',
 )
 
+# For `send_markdown_email` and emailtools email sending.
 EMAIL_LAYOUT = 'mail/base.html'
+
+# Email configuration
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = ''
+#EMAIL_PORT = 465
+#EMAIL_HOST_USER = 'webserver@{{ project_name }}.com'
+#EMAIL_HOST_PASSWORD = ''
+#EMAIL_USE_TLS = True
 
 IGNORABLE_404_URLS = (
     re.compile(r'\.(php|cgi)$'),
@@ -203,64 +210,16 @@ IGNORABLE_404_URLS = (
     re.compile(r'^(?!/static/).*\.(css|js)/?$'),
 )
 
-# Import server specific settings 'settings_<hostname>.py'
-try:
-    import imp
-    import sys
-    module_name = 'settings_' + HOST_NAME
-    module_info = imp.find_module(module_name, [PROJECT_PATH] + sys.path)
-    live_settings = imp.load_module(module_name, *module_info)
-except ImportError:
-    pass
-else:
-    try:
-        attrlist = live_settings.__all__
-    except AttributeError:
-        attrlist = dir(live_settings)
-    for attr in attrlist:
-        if attr.startswith('__'):
-            continue
-        globals()[attr] = getattr(live_settings, attr)
+# DEBUG based settings.
+DEBUG = True
 
-try:
-    from settings_local import *  # NOQA
-except ImportError:
-    pass
-
-#|
-#| Items which depend on a value that may be set in settings_local,
-#| settings_dev, or other external settings files should go below here.
-#|
-
-try:
-    TEMPLATE_DEBUG
-except NameError:
-    TEMPLATE_DEBUG = DEBUG
-
-try:
-    THUMBNAIL_DEBUG
-except NameError:
-    THUMBNAIL_DEBUG = DEBUG
+# For debugging sorl thumbnailer
+#THUMBNAIL_DEBUG = True
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
 
-# This must go _after_ the cache backends are configured, which could be in
-# local settings
-from django.template.loader import add_to_builtins
-add_to_builtins('cachebuster.templatetags.cachebuster')
-
-if not DEBUG:
-    # if not `running in runserver` would be a better condition here
-    TEMPLATE_LOADERS = (
-        ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
-    )
-
+# Attempt to configure sentry from an environment variable.
 try:
-    assert bool(SENTRY_DSN)
-except (NameError, AssertionError):
-    if DEBUG:
-        import warnings
-        warnings.warn('Missing Sentry DSN Value.  Error reporting will not be reported to sentry')
-    else:
-        from django.core.exceptions import ImproperlyConfigured
-        raise ImproperlyConfigured('DSN Value Missing.  Error reporting will not be reported to sentry')
+    SENTRY_DSN = os.environ['SENTRY_DSN']
+except KeyError:
+    pass
