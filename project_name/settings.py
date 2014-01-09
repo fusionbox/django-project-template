@@ -211,7 +211,7 @@ IGNORABLE_404_URLS = (
 )
 
 # DEBUG based settings.
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('t', 'true', 'y', 'yes', '1')
 
 # For debugging sorl thumbnailer
 #THUMBNAIL_DEBUG = True
