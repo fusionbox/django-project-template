@@ -65,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'fusionbox.middleware.GenericTemplateFinderMiddleware',
@@ -72,6 +73,9 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
 )
+
+# This prevents clickjacking <http://en.wikipedia.org/wiki/Clickjacking>
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ROOT_URLCONF = '{{ project_name }}.urls'
 
