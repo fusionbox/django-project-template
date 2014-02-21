@@ -107,6 +107,7 @@ INSTALLED_APPS = (
     'raven.contrib.django',
     'bandit',
     'test_pep8',
+    'backupdb',
 
     # Project
     '{{ project_name }}',
