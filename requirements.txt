@@ -1,6 +1,5 @@
 -e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 Django
-South
 Werkzeug
 django-cachebuster
 django-compressor

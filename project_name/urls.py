@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
 from django.contrib import admin
-admin.autodiscover()
 
 from django.conf import settings
 
@@ -27,8 +26,3 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT,
         }),
     )
-
-    if debug_toolbar.VERSION > '1.2.0':
-        urlpatterns += patterns('',
-            url(r'^__debug__/', include(debug_toolbar.urls)),
-        )
