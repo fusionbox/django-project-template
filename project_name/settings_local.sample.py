@@ -4,6 +4,7 @@ To use this, create a `.env` with DJANGO_SETTINGS_MODULE={{ project_name }}.sett
 from settings import *
 
 DEBUG = True
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
