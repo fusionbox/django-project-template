@@ -14,6 +14,7 @@ MANAGERS = ADMINS
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES = {'default': dj_database_url.config(default='sqlite:///sqlite_database')}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 TIME_ZONE = 'America/Denver'
 SITE_ID = 1
