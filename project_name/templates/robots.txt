@@ -2,22 +2,7 @@
 #
 # robots.txt for Google
 User-Agent: *
-Allow: /
-Allow: /image/
-Allow: /static/image/
-Allow: /doc/
-Allow: /pdf/
-Allow: /img/
-Disallow: /static/js/
-Disallow: /static/css/
-Disallow: /js/
-Disallow: /css/
-Disallow: /flv/
-Disallow: /swf/
+Disallow: /admin/
 
-# robots.txt for Google Image Search
-User-Agent: Googlebot-Image
-Allow: /image/
-Allow: /img/
 
-sitemap: /sitemap.xml
+sitemap: http://fqdn.example.com/sitemap.xml
