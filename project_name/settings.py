@@ -173,17 +173,9 @@ LOGGING = {
 }
 
 # django-compressor setting
-SCSS_IMPORTS = (
-    os.path.join(STATICFILES_DIRS[0], 'css'),
-)
-
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
-    ('text/coffeescript', 'coffee --compile --stdio'),
-    ('text/less', 'lessc {infile} {outfile}'),
-    ('text/x-sass', 'sass {infile} {outfile}'),
-    ('text/x-scss', 'python -mscss.tool {infile} -o {outfile} %s' %
-     ' '.join(['-I "%s"' % d for d in SCSS_IMPORTS])),
+    ('text/x-scss', 'django_pyscss.compressor.DjangoScssFilter'),
 )
 
 
