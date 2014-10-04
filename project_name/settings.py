@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'bandit',
     'test_pep8',
     'backupdb',
+    'authtools',
 
     # Project
     '{{ project_name }}',
@@ -185,6 +186,9 @@ COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'python -mscss.tool {infile} -o {outfile} %s' %
      ' '.join(['-I "%s"' % d for d in SCSS_IMPORTS])),
 )
+
+# authtools
+AUTH_USER_MODEL = 'authtools.User'
 
 
 SESSION_COOKIE_HTTPONLY = True
