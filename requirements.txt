@@ -10,7 +10,7 @@ django-extensions
 django-grappelli
 django-secure
 django-dotenv
-pyScss
+django-pyscss
 dj-database-url
 psycopg2
 django-postgrespool
