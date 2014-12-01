@@ -190,13 +190,8 @@ INTERNAL_IPS = (
 # For `send_markdown_email` and emailtools email sending.
 EMAIL_LAYOUT = 'mail/base.html'
 
-# Email configuration
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = ''
-#EMAIL_PORT = 465
-#EMAIL_HOST_USER = 'webserver@{{ project_name }}.com'
-#EMAIL_HOST_PASSWORD = ''
-#EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 IGNORABLE_404_URLS = (
     re.compile(r'\.(php|cgi)$'),
