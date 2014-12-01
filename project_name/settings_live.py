@@ -1,8 +1,12 @@
 import os
+import dj_database_url
 
 from settings import *
 
 DEBUG = False
+
+DATABASES = {'default': dj_database_url.config()}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 TEMPLATE_LOADERS = (
     ('django.template.loaders.cached.Loader', TEMPLATE_LOADERS),
