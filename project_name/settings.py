@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'bandit',
     'test_pep8',
     'backupdb',
+    'authtools',
 
     # Project
     '{{ project_name }}',
@@ -177,6 +178,9 @@ COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_pyscss.compressor.DjangoScssFilter'),
 )
+
+# authtools
+AUTH_USER_MODEL = 'authtools.User'
 
 
 SESSION_COOKIE_HTTPONLY = True

@@ -25,3 +25,4 @@ honcho
 django-test-pep8
 python-memcached
 django-backupdb>=0.6.0
+django-authtools
