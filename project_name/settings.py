@@ -100,7 +100,6 @@ INSTALLED_APPS = (
     # 3rd party
     'compressor',
     'cachebuster',
-    'south',
     'debug_toolbar',
     'fusionbox.core',
     'django_extensions',
