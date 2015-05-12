@@ -217,7 +217,3 @@ try:
     SENTRY_DSN = os.environ['SENTRY_DSN']
 except KeyError:
     pass
-
-# New version of django-debug-toolbar attempts to patch settings
-# and urls without this setting
-DEBUG_TOOLBAR_PATCH_SETTINGS = False
