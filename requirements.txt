@@ -12,10 +12,9 @@ django-dotenv
 django-pyscss
 dj-database-url
 psycopg2
-django-postgrespool
 django-storages
 ## Fabric
-fusionbox-fabric-helpers
+-e git+https://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox-fabric-helpers
 ## Raven for sentry error reporting
 raven
 ## Running the app from the Procfile
