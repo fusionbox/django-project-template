@@ -11,3 +11,7 @@ ALLOWED_HOSTS = ['*']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SENTRY_DSN = None
+
+INSTALLED_APPS.append(
+    'debug_toolbar',
+)

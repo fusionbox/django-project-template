@@ -71,7 +71,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'fusionbox.middleware.GenericTemplateFinderMiddleware',
     'fusionbox.middleware.RedirectFallbackMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'djangosecure.middleware.SecurityMiddleware',
 )
 
@@ -87,7 +86,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -100,7 +99,6 @@ INSTALLED_APPS = (
     # 3rd party
     'compressor',
     'cachebuster',
-    'debug_toolbar',
     'fusionbox.core',
     'django_extensions',
     'djangosecure',
@@ -112,7 +110,7 @@ INSTALLED_APPS = (
 
     # Project
     '{{ project_name }}',
-)
+]
 
 # test_pep8 config
 TEST_PEP8_DIRS = (
