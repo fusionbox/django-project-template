@@ -15,3 +15,5 @@ SENTRY_DSN = None
 INSTALLED_APPS.append(
     'debug_toolbar',
 )
+
+COMPRESS_MTIME_DELAY = 0
