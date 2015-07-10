@@ -10,3 +10,4 @@ settings_local.py
 build/
 backups/
 .env
+.deployment_virtualenv/
