@@ -1,0 +1,19 @@
+#! /bin/bash
+
+ENV=.deployment_virtualenv
+# version of fusionbox-fabric-helpers to run
+HELPERS_COMMIT=f854d6a00
+HELPERS_COMMIT_FILE=$ENV/HELPERS_COMMIT
+
+if [ ! -d $ENV ]
+then
+  virtualenv -p $(which python2) $ENV
+  touch $HELPERS_COMMIT_FILE
+fi
+source $ENV/bin/activate
+if [ "$HELPERS_COMMIT" != "$(cat $HELPERS_COMMIT_FILE)" ]
+then
+  pip install fabric -e "git+https://github.com/fusionbox/fusionbox-fabric-helpers@$HELPERS_COMMIT#egg=fusionbox-fabric-helpers" >/dev/null
+  echo $HELPERS_COMMIT > $HELPERS_COMMIT_FILE
+fi
+exec fab "$@"
