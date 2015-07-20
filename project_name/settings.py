@@ -147,7 +147,7 @@ LOGGING = {
         }
         'exception': {
             'level': 'ERROR',
-            'class': 'eagleclaw.exception_logging.ExceptionHandler'
+            'class': '{{ project_name }}.exception_logging.ExceptionHandler'
         },
     },
     'loggers': {
