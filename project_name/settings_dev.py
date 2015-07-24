@@ -28,3 +28,7 @@ CACHES = {
         'KEY_PREFIX': '{{ project_name }}',
     }
 }
+
+BACKUPDB_DIRECTORY = os.environ['BACKUP_DIR']
+MEDIA_ROOT = os.environ['MEDIA_ROOT']
+STATIC_ROOT = os.environ['STATIC_ROOT']
