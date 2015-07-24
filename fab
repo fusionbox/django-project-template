@@ -2,7 +2,7 @@
 
 ENV=.deployment_virtualenv
 # version of fusionbox-fabric-helpers to run
-HELPERS_COMMIT=f854d6a00
+HELPERS_COMMIT=b887c83d2dbc
 HELPERS_COMMIT_FILE=$ENV/HELPERS_COMMIT
 
 if [ ! -d $ENV ]
