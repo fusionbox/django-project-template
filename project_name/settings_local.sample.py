@@ -1,7 +1,9 @@
+from __future__ import absolute_import
 """
 To use this, create a `.env` with DJANGO_SETTINGS_MODULE={{ project_name }}.settings_local
 """
-from settings import *
+
+from .settings import *
 
 DEBUG = True
 TEMPLATE_DEBUG = True

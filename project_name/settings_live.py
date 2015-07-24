@@ -1,7 +1,9 @@
+from __future__ import absolute_import
+
 import os
 import dj_database_url
 
-from settings import *
+from .settings import *
 
 DEBUG = False
 
