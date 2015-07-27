@@ -7,7 +7,6 @@ django-debug-toolbar
 django-email-bandit
 django-extensions
 django-grappelli
-django-secure
 django-dotenv
 django-pyscss
 dj-database-url
