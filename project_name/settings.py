@@ -144,7 +144,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
-        }
+        },
         'exception': {
             'level': 'ERROR',
             'class': '{{ project_name }}.exception_logging.ExceptionHandler'
