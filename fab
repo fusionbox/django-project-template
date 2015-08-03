@@ -7,9 +7,23 @@ ENV=.deployment_virtualenv
 HELPERS_COMMIT=b887c83d2dbc
 HELPERS_COMMIT_FILE=$ENV/HELPERS_COMMIT
 
+if which python2 > /dev/null 2> /dev/null
+then
+    EXE=$(which python2)
+elif python --version 2>&1 | egrep "^Python 2" > /dev/null
+then
+    EXE=$(which python)
+fi
+
+if [ -z "$EXE" ]
+then
+    echo "Couldn't find Python 2" > /dev/stderr
+    exit 127
+fi
+
 if [ ! -d $ENV ]
 then
-  virtualenv -p $(which python2) $ENV
+  virtualenv -p "$EXE" $ENV
   touch $HELPERS_COMMIT_FILE
 fi
 source $ENV/bin/activate
