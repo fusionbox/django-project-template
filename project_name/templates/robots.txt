@@ -1,8 +1,13 @@
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 #
 # robots.txt for Google
+{% if not settings.DEBUG %}
 User-Agent: *
 Disallow: /admin/
 
 
 sitemap: http://fqdn.example.com/sitemap.xml
+{% else %}
+User-Agent: *
+Disallow: /
+{% endif %}

@@ -3,9 +3,15 @@ from django.views.generic import TemplateView
 from django.contrib import admin
 from django.conf import settings
 
+class SettingsTemplateView(TemplateView):
+    def get_context_data(self, **kwargs):
+        context = super(SettingsTemplateView, self).get_context_data(**kwargs)
+        context['settings'] = settings
+        return context
 
 urlpatterns = [
-    url('^robots.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    url('^robots.txt$', SettingsTemplateView.as_view(template_name='robots.txt',
+                                                     content_type='text/plain')),
     # url('^sitemap.xml$', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml'),
 
     # Examples:
