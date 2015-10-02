@@ -71,7 +71,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'fusionbox.middleware.GenericTemplateFinderMiddleware',
     'fusionbox.middleware.RedirectFallbackMiddleware',
-    'djangosecure.middleware.SecurityMiddleware',
 )
 
 # This prevents clickjacking <http://en.wikipedia.org/wiki/Clickjacking>
@@ -101,7 +100,6 @@ INSTALLED_APPS = [
     'cachebuster',
     'fusionbox.core',
     'django_extensions',
-    'djangosecure',
     'raven.contrib.django',
     'bandit',
     'test_pep8',
