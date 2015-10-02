@@ -15,7 +15,7 @@ django-storages
 ## Fabric
 -e git+https://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox-fabric-helpers
 ## Raven for sentry error reporting
-raven
+raven==5.1
 ## Running the app from the Procfile
 honcho
 ## Django pep8 testing
