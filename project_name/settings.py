@@ -123,32 +123,42 @@ TEST_PEP8_IGNORE = (
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': True,
+    'disable_existing_loggers': False,
     'root': {
-        'level': 'WARNING',
-        'handlers': ['sentry'],
+        'level': 'DEBUG',
+        'handlers': ['sentry', 'console'],
     },
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            'format': '%(levelname)s %(asctime)s %(pathname)s %(process)d %(thread)d %(message)s',
         },
     },
     'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
         'sentry': {
             'level': 'WARNING',
             'class': 'raven.contrib.django.handlers.SentryHandler',
         },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
         'exception': {
             'level': 'ERROR',
-            'class': '{{ project_name }}.exception_logging.ExceptionHandler'
+            'class': '{{ project_name }}.exception_logging.ExceptionHandler',
         },
     },
     'loggers': {
+        'werkzeug': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'scss': {
+            'level': 'ERROR',
+            'handlers': ['exception'],
+            'propagate': True,
+        },
         'django.db.backends': {
             'level': 'ERROR',
             'handlers': ['console'],
@@ -164,17 +174,6 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
-        'filer': {
-            'level': 'WARNING',
-            'handlers': ['sentry', 'console'],
-            'propagate': False,
-        },
-        'scss': {
-            'level': 'ERROR',
-            'handlers': ['exception'],
-            'propagate': True,
-        },
-
     },
 }
 
