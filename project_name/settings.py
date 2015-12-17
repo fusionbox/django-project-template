@@ -20,7 +20,7 @@ TIME_ZONE = 'America/Denver'
 SITE_ID = 1
 USE_L10N = True
 USE_TZ = True
-
+LANGUAGES = []
 # Set Sorl Thumbnailer to png to preserve transparent backgrounds
 THUMBNAIL_FORMAT = 'PNG'
 
