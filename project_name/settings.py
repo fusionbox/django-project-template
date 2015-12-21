@@ -149,6 +149,10 @@ LOGGING = {
         },
     },
     'loggers': {
+        'django': {
+            'handlers': ['console', 'sentry'],
+            'level': 'DEBUG',
+        },
         'werkzeug': {
             'level': 'DEBUG',
             'handlers': ['console'],
