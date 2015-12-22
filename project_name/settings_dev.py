@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from .settings import *
 
 DEBUG = True
+THUMBNAIL_DEBUG = True
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
