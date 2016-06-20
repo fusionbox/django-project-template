@@ -11,7 +11,7 @@ DEBUG_TOOLBAR_CONFIG = {
 
 # Hijack all emails and send them to the BANDIT_EMAIL address
 EMAIL_BACKEND = 'bandit.backends.smtp.HijackSMTPBackend'
-BANDIT_EMAIL = 'plee@fusionbox.com'
+BANDIT_EMAIL = 'bandit@fusionbox.com'
 
 # Tell raven to report errors even when debug is True
 RAVEN_CONFIG = {
