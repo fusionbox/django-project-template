@@ -3,6 +3,12 @@ import os
 import sys
 import re
 
+# DEBUG based settings.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('t', 'true', 'y', 'yes', '1')
+
+# For debugging sorl thumbnailer
+#THUMBNAIL_DEBUG = True
+
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 ADMINS = (
@@ -46,21 +52,31 @@ STATICFILES_FINDERS = (
 DEFAULT_SECRET_KEY = '{{ secret_key }}'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', DEFAULT_SECRET_KEY)
 
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.core.context_processors.tz",
-    "django.contrib.messages.context_processors.messages",
-    "django.core.context_processors.request",
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(PROJECT_PATH, 'templates'),
+        ],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
+            ],
+            'debug': DEBUG,
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ],
+        },
+    },
+]
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -80,10 +96,6 @@ ROOT_URLCONF = '{{ project_name }}.urls'
 
 WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 FORCE_SCRIPT_NAME = ''
-
-TEMPLATE_DIRS = (
-    os.path.join(PROJECT_PATH, 'templates'),
-)
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -214,12 +226,6 @@ IGNORABLE_404_URLS = (
     re.compile(r'^/cgi-bin/'),
     re.compile(r'^(?!/static/).*\.(css|js)/?$'),
 )
-
-# DEBUG based settings.
-DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('t', 'true', 'y', 'yes', '1')
-
-# For debugging sorl thumbnailer
-#THUMBNAIL_DEBUG = True
 
 DATABASE_ENGINE = DATABASES['default']['ENGINE']
 
