@@ -1,7 +1,6 @@
--e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
+--e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 Django
 Werkzeug
-django-cachebuster
 django-compressor
 django-debug-toolbar
 django-email-bandit
@@ -11,15 +10,8 @@ django-dotenv
 django-pyscss
 dj-database-url
 psycopg2
-django-storages
-## Fabric
--e git+https://github.com/fusionbox/fusionbox-fabric-helpers.git#egg=fusionbox-fabric-helpers
 ## Raven for sentry error reporting
 raven==5.1
-## Running the app from the Procfile
-honcho
-## Django pep8 testing
-django-test-pep8
 python-memcached
 django-backupdb>=0.6.0
 django-authtools

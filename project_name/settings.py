@@ -27,11 +27,8 @@ SITE_ID = 1
 USE_L10N = True
 USE_TZ = True
 LANGUAGES = []
-# Set Sorl Thumbnailer to png to preserve transparent backgrounds
-THUMBNAIL_FORMAT = 'PNG'
 
-# Set the site title in Grappelli
-GRAPPELLI_ADMIN_TITLE = '{{ project_name }} Admin Center'
+THUMBNAIL_PRESERVE_FORMAT = True
 
 MEDIA_ROOT = os.path.join(PROJECT_PATH, '..', 'media')
 MEDIA_URL = '/media/'
@@ -61,13 +58,13 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
-                'django.core.context_processors.debug',
-                'django.core.context_processors.i18n',
-                'django.core.context_processors.media',
-                'django.core.context_processors.static',
-                'django.core.context_processors.tz',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.request',
+                'django.template.context_processors.request',
             ],
             'debug': DEBUG,
             'loaders': [
@@ -104,34 +101,20 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'grappelli',  # Must go before admin.
     'django.contrib.admin',
 
     # 3rd party
     'compressor',
-    'cachebuster',
     'fusionbox.core',
     'django_extensions',
     'raven.contrib.django',
     'bandit',
-    'test_pep8',
     'backupdb',
     'authtools',
 
     # Project
     '{{ project_name }}',
 ]
-
-# test_pep8 config
-TEST_PEP8_DIRS = (
-    os.path.dirname(PROJECT_PATH),
-)
-TEST_PEP8_EXCLUDE = (
-    'migrations',
-)
-TEST_PEP8_IGNORE = (
-    'E501',  # Line length of 80 chars
-)
 
 LOGGING = {
     'version': 1,
@@ -207,8 +190,7 @@ SESSION_COOKIE_HTTPONLY = True
 
 INTERNAL_IPS = (
     '127.0.0.1',
-    '208.186.116.206',
-    '208.186.142.130',
+    '207.173.246.52',
 )
 
 # For `send_markdown_email` and emailtools email sending.
