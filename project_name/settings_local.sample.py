@@ -19,4 +19,10 @@ INSTALLED_APPS.append(
     'debug_toolbar',
 )
 
+# Now required by
+# https://django-debug-toolbar.readthedocs.io/en/stable/installation.html
+MIDDLEWARE_CLASSES = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+] + list(MIDDLEWARE_CLASSES)
+
 COMPRESS_MTIME_DELAY = 0

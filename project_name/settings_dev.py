@@ -31,6 +31,12 @@ CACHES = {
     }
 }
 
+# Now required by
+# https://django-debug-toolbar.readthedocs.io/en/stable/installation.html
+MIDDLEWARE_CLASSES = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+] + list(MIDDLEWARE_CLASSES)
+
 BACKUPDB_DIRECTORY = os.environ['BACKUP_DIR']
 MEDIA_ROOT = os.environ['MEDIA_ROOT']
 STATIC_ROOT = os.environ['STATIC_ROOT']
