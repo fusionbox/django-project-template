@@ -11,7 +11,8 @@ django-pyscss
 dj-database-url
 psycopg2
 ## Raven for sentry error reporting
-raven==5.1
+## If using old sentry server, pin to 5.1 and fix installed apps
+raven
 python-memcached
 django-backupdb>=0.6.0
 django-authtools
