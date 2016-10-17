@@ -1,4 +1,4 @@
---e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
+-e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 Django
 Werkzeug
 django-compressor
