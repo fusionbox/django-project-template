@@ -216,3 +216,12 @@ try:
     SENTRY_DSN = os.environ['SENTRY_DSN']
 except KeyError:
     pass
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+]
