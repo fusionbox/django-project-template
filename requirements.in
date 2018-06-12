@@ -1,18 +1,6 @@
--e git://github.com/fusionbox/django-fusionbox.git#egg=django_fusionbox
 Django
-Werkzeug
-django-compressor
-django-debug-toolbar
-django-email-bandit
-django-extensions
-django-grappelli
 django-dotenv
-django-pyscss
 dj-database-url
 psycopg2
-## Raven for sentry error reporting
-## If using old sentry server, pin to 5.1 and fix installed apps
 raven
-python-memcached
-django-backupdb>=0.6.0
-django-authtools
+django-backupdb
